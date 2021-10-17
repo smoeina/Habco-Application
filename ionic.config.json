@@ -1,0 +1,7 @@
+{
+  "name": "Habco",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
