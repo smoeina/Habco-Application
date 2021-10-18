@@ -1,0 +1,45 @@
+
+.heading{
+  margin-top: 10vh;
+  text-align: center;
+
+
+}
+h1,h2{
+  font-family: 'Pacifico', cursive;
+  font-size: 45px;
+  color: #1d3557;
+}
+p{
+  color: #868686dc;
+  font-family: 'spotify';
+  margin-top: 25px;
+}
+img{
+  height: 300px;
+}
+ion-slides{
+  margin-top: 20%;
+}
+#get-started{
+  font-weight: 400;
+}
+ion-button{
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-top: 10%;
+  font-size: 30px;
+  font-family: 'spotify';
+  padding-top: -18px;
+}
+p{
+  margin: 0 10% 0 10%;
+}
+.footer{
+  margin:5px 0 0 0;
+  text-align: center;
+}
+ion-slides {
+  --bullet-background: red;
+  --bullet-background-active: rebeccapurple; }
+

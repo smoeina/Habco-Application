@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "Habco",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}
