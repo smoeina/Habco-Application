@@ -1,5 +1,49 @@
-img{
-  height: 300px;
+
+h1,h2{
+  font-family: "PlusJakarta-bold";
+  font-size: 40px;
   text-align: center;
-  margin: 15% 15% 0 20%;
+  font-weight: 100;
+}
+p{
+  color: #868686dc;
+  font-family: 'QanelasUltraLight';
+  margin-top: 25px;
+  text-align: center;
+
+}
+img{
+  text-align: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%;
+  margin-top: 15%;
+}
+
+ion-input{
+  font-family: "QanelasUltraLight";
+  background-color: #F1F1F1;
+  width: 60%;
+  margin-left: 20%;
+  margin-right: 20%;
+  border-radius: 20px;
+  margin-top: 5px;
+}
+ion-button{
+  font-family: "PlusJakarta-bold";
+  position: relative;
+  margin-left: 25%;
+  width: 50%;
+	height: 50px;
+  margin-right: 25%;
+  margin-top: 20px;
+}
+#forget{
+  margin-left: 50%;
+
+}
+a{
+  font-family: "PlusJakarta";
+
 }

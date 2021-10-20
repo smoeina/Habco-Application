@@ -24,8 +24,29 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
-@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Andada+Pro:ital@1&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,500;1,400&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,500;1,400&display=swap');
+
+@font-face {
+  font-family: 'QanelasUltraLight';
+  src: url('/assets/fonts/QanelasUltraLight.woff');
+}
+@font-face {
+  font-family: 'QanelasBold';
+  src: url('/assets/fonts/QanelasBold.woff');
+}
+@font-face {
+  font-family: 'Gilroy';
+  src: url('/assets/fonts/Gilroy-Light.otf');
+}
+@font-face {
+  font-family: 'Gilroy-bold';
+  src: url('/assets/fonts/Gilroy-ExtraBold.otf');
+}
+@font-face {
+  font-family: 'PlusJakarta';
+  src: url('/assets/fonts/PlusJakartaDisplay-Light.otf');
+}
+@font-face {
+  font-family: 'PlusJakarta-bold';
+  src: url('/assets/fonts/PlusJakartaDisplay-Bold.otf');
+}
+

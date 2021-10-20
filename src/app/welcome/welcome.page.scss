@@ -1,36 +1,27 @@
 
 .heading{
-  margin-top: 10vh;
   text-align: center;
 
 
 }
 h1,h2{
-  font-family: 'Pacifico', cursive;
-  font-size: 45px;
-  color: #1d3557;
+  font-family: 'PlusJakarta-bold', cursive;
+  font-size: 35px;
 }
 p{
   color: #868686dc;
-  font-family: 'spotify';
+  font-family: 'QanelasUltraLight';
   margin-top: 25px;
 }
-img{
-  height: 300px;
-}
-ion-slides{
-  margin-top: 20%;
-}
-#get-started{
-  font-weight: 400;
-}
+
+
 ion-button{
-  margin-left: 20%;
-  margin-right: 20%;
-  margin-top: 10%;
-  font-size: 30px;
-  font-family: 'spotify';
-  padding-top: -18px;
+  font-family: "PlusJakarta-bold";
+  position: relative;
+  margin-left: 30%;
+  width: 40%;
+	height: 50px;
+  margin-right: 30%;
 }
 p{
   margin: 0 10% 0 10%;
@@ -40,6 +31,16 @@ p{
   text-align: center;
 }
 ion-slides {
+  margin-top: 10%;
   --bullet-background: red;
-  --bullet-background-active: rebeccapurple; }
+  --bullet-background-active: rebeccapurple;
+  height: 60%;
+margin-bottom: 10%;
+display: flex;}
 
+  img{
+    height: 400px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }

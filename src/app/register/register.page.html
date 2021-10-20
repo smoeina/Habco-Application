@@ -1,20 +1,17 @@
 
 <ion-content>
   <img src="/assets/register.png" alt="">
-  <h1>Join us :) </h1>
+  <h1>Join us Today </h1>
   <p>Please enter the details below to continue.</p>
 
 
   <form action="">
     <ion-input type="text" placeholder="National ID Number"></ion-input>
     <!-- Put Eye icon for seeing password -->
+    <ion-input class="input" ng-model="email" placeholder="Email"></ion-input>
     <ion-input type="password" placeholder="Password"></ion-input>
-    <ion-input type="phonenumber" placeholder="Phone Number"></ion-input>
-    <ion-input class="input" ng-model="countryCode" placeholder="Country Code"></ion-input>
-    <ion-input class="input" ng-model="mobileNumber" placeholder="Mobile Number"></ion-input>
-
-    <a>forget password?</a>
-    <ion-button>Register</ion-button>
+    <ion-input class="input" ng-model="phone" placeholder="Mobile eg.+989357891378"></ion-input>
+    <ion-button expand="block" shape='round' clearInput >Register</ion-button>
   </form>
   <p>Don't have an account?<a>Register</a></p>
 </ion-content>
