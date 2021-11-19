@@ -1,0 +1,39 @@
+<ion-content>
+
+  <img src="/assets/sms-verification.png" alt="">
+  <h1>SMS Verification</h1>
+  <p>Please Enter the code sent to {{userService.user.phoneNumber.internationalNumber}}</p>
+  <div class="SMS">
+
+    <ion-row >
+      <ion-col>
+       <ion-input class="x" #otp1 required="true" maxLength="1" [(ngModel)] ="OTP.first" (keyup)="otpController($event,otp2,'',1)">
+       </ion-input>
+       <ion-input class="x" #otp2 required="true" maxLength="1" [(ngModel)]="OTP.second" (keyup)="otpController($event,otp3,otp1,2)">
+       </ion-input>
+       <ion-input class="x" #otp3 required="true" maxLength="1" [(ngModel)]="OTP.third"  (keyup)="otpController($event,otp4,otp2,3)">
+       </ion-input>
+
+       <ion-input class="x" #otp4 required="true" maxLength="1" [(ngModel)]="OTP.forth"  (keyup)="otpController($event,'',otp3,4)">
+      </ion-input>
+
+      </ion-col>
+    </ion-row>
+    <p>Did you write your number wrong?<a (click)="clickLoginButton()">Login</a></p>
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ion-content>

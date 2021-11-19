@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-
+import { AuthGuard } from './auth.guard';
 const routes: Routes = [
   {
     path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: '',
@@ -25,7 +26,15 @@ const routes: Routes = [
   },
   {
     path: 'informations',
-    loadChildren: () => import('./informations/informations.module').then( m => m.InformationsPageModule)
+    loadChildren: () => import('./informations/informations.module').then( m => m.InformationsPageModule),
+    canActivate: [AuthGuard] },
+  {
+    path: 'sms-verification',
+    loadChildren: () => import('./sms-verification/sms-verification.module').then( m => m.SmsVerificationPageModule)
+  },
+  {
+    path: 'doctor-upload',
+    loadChildren: () => import('./doctor-upload/doctor-upload.module').then( m => m.DoctorUploadPageModule)
   },
 ];
 

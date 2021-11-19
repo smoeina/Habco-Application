@@ -1,17 +1,39 @@
 
 <ion-content>
-  <img src="/assets/register.png" alt="">
-  <h1>Join us Today </h1>
+  <h1>Join us Today</h1>
   <p>Please enter the details below to continue.</p>
+  <!-- phoneNumber?: number;
+  email?: string;
+  password?: string;
+  id?: number;
+  accessToken?: string; -->
+  <form #userlogin = "ngForm" (ngSubmit) = "onClickSubmit(userlogin.value)" >
 
+    <div class="flex-container" #type>
+      <div [class.active]="step==='doctor'" (click)="doctorClicked()">
+        <img class="type" src="/assets/Doctor-Register.png" alt="">
+        <p style="font-size: 13px;display: inline"><b>Doctor</b></p>
+      </div>
 
-  <form action="">
-    <ion-input type="text" placeholder="National ID Number"></ion-input>
+      <div [class.active]="step==='nurse'" (click)="nurseClicked()"> <img class="type" src="/assets/Nurse-Register.png" alt="">
+        <p style="font-size: 13px;display: inline"><b>Nurse</b></p>
+
+      </div>
+      <div [class.active]="step==='pharmacist'" (click)="drugStoreClicked()"><div > <img class="type" src="/assets/Drugstore-Register.png" alt=""></div>
+      <p style="font-size: 13px;display: inline"><b>Pharmacist</b></p>
+    </div>
+    <div [class.active]="step==='patient'" (click)="userClicked()" ><div> <img class="type"  src="/assets/Normal-user-Register.png" alt=""></div>
+    <p style="font-size: 14px;"><b>Patient</b></p>
+  </div>
+    </div>
+    <ion-intl-tel-input defaultCountryiso="ir" inputPlaceholder="9357891378" #phone [(ngModel)]="userService.user.phone" [ngModelOptions]="{standalone: true}"></ion-intl-tel-input>
+    <ion-input on-keyup="checkNationalID()" #ID [ngModelOptions]="{standalone: true}" name="N_ID" type="number" placeholder="National ID Number" [(ngModel)]="userService.user.national_number"></ion-input>
+    <span [hidden]="idSpan">Incorrect format for ID</span>
     <!-- Put Eye icon for seeing password -->
-    <ion-input class="input" ng-model="email" placeholder="Email"></ion-input>
-    <ion-input type="password" placeholder="Password"></ion-input>
-    <ion-input class="input" ng-model="phone" placeholder="Mobile eg.+989357891378"></ion-input>
-    <ion-button expand="block" shape='round' clearInput >Register</ion-button>
+    <ion-input on-keyup="checkEmail()" #email [ngModelOptions]="{standalone: true}" type="email" class="input" placeholder="Email" [(ngModel)]="userService.user.email"></ion-input>
+    <span [hidden]="emailSpan">Incorrect format for Email</span>
+    <ion-button expand="block" shape='round' clearInput type ="submit" value = "submit">Register</ion-button>
   </form>
-  <p>Don't have an account?<a>Register</a></p>
+  <p>Have an account?<a (click)="clickLoginButton()">Login</a></p>
+
 </ion-content>

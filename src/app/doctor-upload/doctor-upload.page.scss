@@ -1,0 +1,45 @@
+ion-title{
+  font-family: PlusJakarta-bold;
+}
+ion-input{
+  font-family: "QanelasUltraLight";
+}
+.inputs_devision{
+  margin-top: 10%;
+}
+ion-item{
+  font-family:PlusJakarta-bold;
+  --border-width: 2px;
+  --border-radius: 8px;
+  width: 60%;
+  position: relative;
+  margin-left: 20%;
+  margin-right: 20%;
+}
+.Quest{
+  font-size: 15px;
+  margin-bottom: 5%;
+}
+ion-button{
+  font-family: "PlusJakarta-bold";
+  position: relative;
+  margin-left: 25%;
+  width: 50%;
+	height: 50px;
+  margin-right: 25%;
+  margin-top: 5%;
+  margin-bottom: 15%;
+  border-radius: 15%;
+}
+.accept_terms{
+  font-family:QanelasUltraLight ;
+  font-size: 16px;
+  margin-left: 5%;
+}
+p{
+  display:inline-block;
+  margin-left: 4px;
+}
+ion-checkbox{
+  margin-top: 4px;
+}

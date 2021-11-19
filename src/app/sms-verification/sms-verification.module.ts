@@ -4,19 +4,16 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { InformationsPageRoutingModule } from './informations-routing.module';
+import { SmsVerificationPageRoutingModule } from './sms-verification-routing.module';
 
-import { InformationsPage } from './informations.page';
-
+import { SmsVerificationPage } from './sms-verification.page';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    InformationsPageRoutingModule
+    SmsVerificationPageRoutingModule,
   ],
-  declarations: [InformationsPage]
+  declarations: [SmsVerificationPage]
 })
-export class InformationsPageModule {
-
-}
+export class SmsVerificationPageModule {}

@@ -1,0 +1,47 @@
+.x{
+  display:inline-block;
+  width:15vw;
+  margin:2%;
+  border-radius: 50%;
+  --background:#e1e1e1;
+  text-align: center;
+  position: relative;
+  padding-bottom: 20%;
+  height: 15vw;
+  }
+
+.SMS{
+
+  margin-top: 10%;
+  text-align: center;
+
+}
+
+
+h1,h2{
+  font-family: "PlusJakarta-bold";
+  font-size: 25px;
+  text-align: center;
+  font-weight: 100;
+}
+p{
+  color: #868686dc;
+  font-family: 'QanelasUltraLight';
+  margin-top: 25px;
+  text-align: center;
+
+}
+img{
+  text-align: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+  margin-top: 15%;
+}
+ion-input{
+  font-family: 'PlusJakarta-bold';
+  text-align: center;
+  color:var(--ion-color-primary) !important;
+  font-weight: 700;
+}

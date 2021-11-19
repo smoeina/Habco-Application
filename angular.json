@@ -31,7 +31,9 @@
                 "output": "./svg"
               }
             ],
-            "styles": ["src/theme/variables.scss", "src/global.scss"],
+            "styles": ["src/theme/variables.scss", "src/global.scss",{
+              "input": "node_modules/flag-icon-css/css/flag-icons.css"
+            }],
             "scripts": [],
             "aot": false,
             "vendorChunk": true,

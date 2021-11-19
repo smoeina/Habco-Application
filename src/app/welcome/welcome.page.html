@@ -1,34 +1,30 @@
 
 <ion-content>
 
-  <ion-slides  pager="true"  [options]="slideOpts"  #slider>
+  <ion-slides mode="md" pager="true"  *ngIf="viewEntered" [options]="sliderOpts"  #slider>
 
 
     <ion-slide>
       <div class="center" style="clear:both;display: block; width: 100%;">
         <div style="text-align: center;">
       <table style="width: 100%;">
+
+        <tr>
+          <td>
+            <div style="text-align: center;">
+            <img class="slider-image" src="/assets/Welcome-Page-Slider-1.png" />
+            </div>
+          </td>
+        </tr>
         <tr>
           <td class="green">
             <div style="text-align: center; margin-top: 10%;">
             <h2>     What is the Habco?</h2>
+            <p><b>Habco</b> is an application for improving social healthcare</p>
             </div>
           </td>
         </tr>
-        <tr>
-          <td>
-            <div style="text-align: center;">
-            <img class="slider-image" src="/assets/welcome-1.png" />
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td class="text">
-            <div style="text-align: center;">
-              <b>Habco</b> is an application for improving social healthcare
-            </div>
-          </td>
-        </tr>
+
       </table>
         </div>
     </div>
@@ -39,27 +35,23 @@
       <div class="center" style="clear:both;display: block; width: 100%;">
         <div style="text-align: center;">
       <table style="width: 100%;">
-        <tr>
-          <td class="green">
-            <div style="text-align: center; margin-top: 10%;">
-            <h2>     What is the Habco?</h2>
-            </div>
-          </td>
-        </tr>
+
         <tr>
           <td>
             <div style="text-align: center;">
-            <img class="slider-image" src="/assets/welcome-1.png" />
+            <img class="slider-image" src="/assets/Welcome-Page-Slider-2.png" />
             </div>
           </td>
         </tr>
         <tr>
-          <td class="text">
-            <div style="text-align: center;">
-              <b>Habco</b> is an application for improving social healthcare
+          <td class="green">
+            <div style="text-align: center; margin-top: 10%;">
+            <h2>What does habco do?</h2>
+            <p><b>Habco</b> connects doctors, nurses and drug Stores for <b>you.</b></p>
             </div>
           </td>
         </tr>
+
       </table>
         </div>
     </div>
@@ -68,34 +60,30 @@
       <div class="center" style="clear:both;display: block; width: 100%;">
         <div style="text-align: center;">
       <table style="width: 100%;">
-        <tr>
-          <td class="green">
-            <div style="text-align: center; margin-top: 10%;">
-            <h2>     What is the Habco?</h2>
-            </div>
-          </td>
-        </tr>
+
         <tr>
           <td>
             <div style="text-align: center;">
-            <img class="slider-image" src="/assets/welcome-1.png" />
+            <img class="slider-image" src="/assets/welcome-3.png" />
             </div>
           </td>
         </tr>
         <tr>
-          <td class="text">
-            <div style="text-align: center;">
-              <b>Habco</b> is an application for improving social healthcare
+          <td class="green">
+            <div style="text-align: center; margin-top: 10%;">
+            <h2>Why should I use Habco?</h2>
+            <p><b>Habco</b> respects your time.</p>
             </div>
           </td>
         </tr>
+
       </table>
         </div>
     </div>
     </ion-slide>
-
 
   </ion-slides>
+
 
 
 
@@ -104,10 +92,10 @@
   <ion-button shape="round" expand="block" fill="solid" routerLink="../register" >
     Get Started
   </ion-button>
-
+<!--
   <div class="footer">
-    <p>Already have account? <a routerLink="login">Login</a></p>
-  </div>
+    <p>Already have account? <a (click)="clickLoginButton()">Login</a></p>
+  </div> -->
 
 
 

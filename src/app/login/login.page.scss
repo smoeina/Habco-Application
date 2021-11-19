@@ -1,6 +1,6 @@
 h1,h2{
   font-family: "PlusJakarta-bold";
-  font-size: 40px;
+  font-size: 30px;
   text-align: center;
   font-weight: 100;
 }
@@ -16,7 +16,7 @@ img{
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 60%;
+  width: 30%;
   margin-top: 15%;
 }
 
@@ -45,4 +45,20 @@ ion-button{
 a{
   font-family: "PlusJakarta";
 
+}
+ion-intl-tel-input{
+  margin-left: 25%;
+  margin-right: 25%;
+  width: 50%;
+
+}
+span{
+  color: #ca2525dc;
+  font-family: 'QanelasUltraLight';
+  margin-top: 15px;
+  text-align: center;
+  width: 60%;
+  margin-left: 20%;
+  margin-right: 20%;
+  white-space:nowrap;
 }

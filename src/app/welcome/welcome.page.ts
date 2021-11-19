@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { IonSlides } from '@ionic/angular';
 
@@ -8,16 +9,26 @@ import { IonSlides } from '@ionic/angular';
 })
 export class WelcomePage implements OnInit {
 
-  @ViewChild('slider')  slider: IonSlides; 
+  @ViewChild('slider')  slider: IonSlides;
 
-  slideOpts = {
-    initialSlide: 0
-  };
 
-  constructor() { }
+  public viewEntered = false;
+  public sliderOpts = null;
 
-  ngOnInit() {
+  constructor(public router: Router) {}
 
+  ionViewDidEnter() {
+    this.viewEntered = true;
   }
 
+  ngOnInit() {
+    this.sliderOpts ={
+      effect: 'slide',
+      initialSlide: 0,
+    };
+  }
+  clickLoginButton(){
+    this.router.navigate(['login']);
+
+  }
 }
