@@ -11,7 +11,6 @@ export class WelcomePage implements OnInit {
 
   @ViewChild('slider')  slider: IonSlides;
 
-
   public viewEntered = false;
   public sliderOpts = null;
 
@@ -26,6 +25,16 @@ export class WelcomePage implements OnInit {
       effect: 'slide',
       initialSlide: 0,
     };
+
+
+
+
+
+
+
+
+
+
   }
   clickLoginButton(){
     this.router.navigate(['login']);

@@ -1,0 +1,89 @@
+
+h1{
+  font-family: "PlusJakarta-bold";
+  font-size: 15px;
+  text-align: center;
+  font-weight: 100;
+}
+h2{
+  font-family: "PlusJakarta";
+  font-size: 13px;
+  text-align: center;
+  font-weight: 100;
+  margin-top: 10%;
+}
+p{
+  color: #868686dc;
+  font-family: 'QanelasUltraLight';
+  margin-top: 4%;
+  text-align: center;
+
+}
+
+ion-content{
+  --ion-background-color: linear-gradient(to top, #249b55, #abf853 80%);
+}
+.welcome-border{
+  text-align: center;
+  background-color: white;
+  margin-right: 10%;
+  margin-left: 10%;
+  margin-top: 10%;
+  padding-bottom: 5%;
+  background: rgba( 255, 255, 255, 0.6 );
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 2.5px );
+-webkit-backdrop-filter: blur( 2.5px );
+border-radius: 10px;
+border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+.profile-status-messsage{
+  text-align: left;
+  margin-left: 10%;
+  font-size: 15px;
+}
+.profile-status{
+  background: rgba( 255, 255, 255, 0.6 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 2.5px );
+  -webkit-backdrop-filter: blur( 2.5px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 5%;
+  }
+
+.item{
+  background: rgba( 255, 255, 255, 0.6 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 2.5px );
+  -webkit-backdrop-filter: blur( 2.5px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+  height: 40%;
+  width: 40%;
+  margin:10px
+}
+.flex-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap:wrap;
+  height: 35%;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 4px;
+}
+.item-title{
+  margin-top: 3px;
+}
+qr-code{
+  background: rgba( 255, 255, 255, 0.6 );
+  margin-top: 5px;
+}
+.image{
+  width: 50%;
+  text-align: center;
+  margin-left: 25%;
+  filter: grayscale(100%);
+}

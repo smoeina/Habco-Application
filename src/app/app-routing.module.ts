@@ -36,6 +36,40 @@ const routes: Routes = [
     path: 'doctor-upload',
     loadChildren: () => import('./doctor-upload/doctor-upload.module').then( m => m.DoctorUploadPageModule)
   },
+  {
+    path: 'doctor-home-page',
+    loadChildren: () => import('./doctor-home-page/doctor-home-page.module').then( m => m.DoctorHomePagePageModule)
+  },
+  {
+    path: 'user-home-page',
+    loadChildren: () => import('./user-home-page/user-home-page.module').then( m => m.UserHomePagePageModule)
+  },
+  {
+    path: 'patient-edit-info',
+    loadChildren: () => import('./patient-edit-info/patient-edit-info.module').then( m => m.PatientEditInfoPageModule)
+  },
+  {
+    path: 'user-doctors-page',
+    loadChildren: () => import('./user-doctors-page/user-doctors-page.module').then( m => m.UserDoctorsPagePageModule)
+  },
+  {
+    path: 'user-nurses-page',
+    loadChildren: () => import('./user-nurses-page/user-nurses-page.module').then( m => m.UserNursesPagePageModule)
+  },
+  {
+    path: 'doctor-patients-page',
+    loadChildren: () => import('./doctor-patients-page/doctor-patients-page.module').then( m => m.DoctorPatientsPagePageModule)
+  },
+  {
+    path: 'doctor-prescriptions-page',
+    loadChildren: () => import('./doctor-prescriptions-page/doctor-prescriptions-page.module').
+    then( m => m.DoctorPrescriptionsPagePageModule)
+  },
+  {
+    path: 'doctor-add-prescription',
+    loadChildren: () => import('./doctor-add-prescription/doctor-add-prescription.module').then( m => m.DoctorAddPrescriptionPageModule)
+  },
+
 ];
 
 @NgModule({

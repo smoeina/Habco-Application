@@ -1,8 +1,12 @@
 ion-title{
   font-family: PlusJakarta-bold;
+  font-size: 15px;
+
 }
 ion-input{
   font-family: "QanelasUltraLight";
+  font-size: 15px;
+
 }
 .inputs_devision{
   margin-top: 10%;
@@ -11,13 +15,14 @@ ion-item{
   font-family:PlusJakarta-bold;
   --border-width: 2px;
   --border-radius: 8px;
-  width: 60%;
+  width: 80%;
   position: relative;
-  margin-left: 20%;
-  margin-right: 20%;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 4px;
 }
 .Quest{
-  font-size: 15px;
+  font-size: 11px;
   margin-bottom: 5%;
 }
 ion-button{
@@ -42,4 +47,8 @@ p{
 }
 ion-checkbox{
   margin-top: 4px;
+}
+ion-label{
+  font-size: 10px;
+  font-family:QanelasUltraLight;
 }

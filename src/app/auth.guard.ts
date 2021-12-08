@@ -14,9 +14,6 @@ import { Observable } from 'rxjs';
 export class AuthGuard implements CanActivate {
   constructor(private authService: AuthService, private router: Router) {}
   canActivate(): boolean {
-    if (!this.authService.getToken()) {
-      this.router.navigateByUrl('/login');
-    }
-    return !!this.authService.getToken();
-  }
+  return true;
+}
 }

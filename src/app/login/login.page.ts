@@ -1,5 +1,5 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { UserService } from '../user.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { LoadingController } from '@ionic/angular';
@@ -10,13 +10,15 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  @ViewChild('ID') id;
+  @ViewChild('ID') nationalNumber;
   @ViewChild('phone') phone;
 
   idSpan = true;
   phoneSpan = true;
+  phone_number = '';
+  realNationalNumber = '';
 
-  constructor(public userService: UserService,public router: Router,public authService: AuthService,
+  constructor(public router: Router,public authService: AuthService,
  public alertController: AlertController,public loadingController: LoadingController) {
   }
 
@@ -24,8 +26,6 @@ export class LoginPage implements OnInit {
   ngOnInit() {
 
   }
-
-
 
     async showError(errorMessage) {
     const alert = await this.alertController.create({
@@ -54,11 +54,23 @@ export class LoginPage implements OnInit {
      });
     await loading.present();
     if (this.idSpan &&this.phoneSpan){
-      console.log(this.userService.user);
-      this.authService.login().toPromise().then(resp => {
+      if (this.nationalNumber.value.toString().length ===9){
+        this.realNationalNumber= '0' + this.nationalNumber.value.toString();
+        console.log(this.realNationalNumber);
+      }
+      else{
+        this.realNationalNumber= this.nationalNumber.value.toString();
+        console.log('YA:'+this.realNationalNumber);
+      }
+      this.phone_number = (this.phone.dialCodePrefix+this.phone.country.dialCode +
+         this.phone.phoneNumber).replace(/\s/g, '').replace('+','');
+      this.authService.login(this.realNationalNumber,this.phone_number).toPromise().then(resp => {
         console.log(resp);
         console.log(this.phone.value);
-         loading.dismiss();
+        this.authService.otp_token = resp['data'].loginToken;
+        localStorage.setItem('opt_token',resp['data'].loginToken);
+        console.log(resp['data'].loginToken);
+        loading.dismiss();
         this.router.navigate(['sms-verification']);
 
       }).catch(error => {
@@ -73,8 +85,8 @@ export class LoginPage implements OnInit {
 
  }
  checkNationalID(){
-   console.log(this.id.value);
-  if(this.id.value.length===10){
+   console.log(this.nationalNumber.value);
+  if(this.nationalNumber.value.length===10){
     this.idSpan=true;
   }
   else{

@@ -16,7 +16,7 @@ img{
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 30%;
+  width: 40%;
   margin-top: 15%;
 }
 
@@ -28,6 +28,8 @@ ion-input{
   margin-right: 20%;
   border-radius: 20px;
   margin-top: 5px;
+  --padding-start: 10px;
+
 }
 ion-button{
   font-family: "PlusJakarta-bold";
@@ -47,9 +49,9 @@ a{
 
 }
 ion-intl-tel-input{
-  margin-left: 25%;
-  margin-right: 25%;
-  width: 50%;
+  margin-left: 15%;
+  margin-right: 15%;
+  width: 70%;
 
 }
 span{

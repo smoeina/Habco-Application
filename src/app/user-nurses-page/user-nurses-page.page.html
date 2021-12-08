@@ -1,0 +1,62 @@
+<ion-header>
+
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="user-home-page">Back</ion-back-button>
+    </ion-buttons>
+    <ion-title>Nurses</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+
+  <ion-list>
+    <ion-list-header>
+      My Nurses
+    </ion-list-header>
+
+
+    <div *ngFor="let nurse of this.my_nurses">
+      <div class="profile">
+        <ion-item lines="none" no-lines>
+          <ion-avatar slot="start">
+            <img src="https://ui-avatars.com/api/background=17D7A0&color=fff?name={{nurse.user.fname}}+{{nurse.user.lname}}?">
+          </ion-avatar>
+          <ion-label>
+            <h2>{{nurse.user.fname}} {{nurse.user.lname}}</h2>
+            <h3>{{nurse.specialization}}</h3>
+          </ion-label>
+          <ion-icon name="chatbubbles-sharp" slot="end" (click)="whats_app_clicked(nurse)"></ion-icon>
+        </ion-item>
+      </div>
+    </div>
+  </ion-list>
+
+
+
+
+
+
+
+  <ion-list>
+    <ion-list-header>
+      All Nurses
+    </ion-list-header>
+    <div *ngFor="let nurse of this.nurses_list">
+      <div class="profile">
+        <ion-item lines="none" no-lines>
+          <ion-avatar slot="start">
+            <img src="https://ui-avatars.com/api/background=17D7A0&color=fff?name={{nurse.fname}}+{{nurse.lname}}?">
+          </ion-avatar>
+          <ion-label>
+            <h2>{{nurse.fname}} {{nurse.lname}}</h2>
+            <h3>{{nurse.specialization}}</h3>
+          </ion-label>
+          <ion-icon name="add-circle" slot="end" #nurse_selected
+           (click)="select_nurse(nurse)"></ion-icon>
+        </ion-item>
+      </div>
+    </div>
+  </ion-list>
+
+</ion-content>

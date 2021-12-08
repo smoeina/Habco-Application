@@ -1,13 +1,13 @@
 
 <ion-content>
 
-  <img src="/assets/login.png" alt="">
+  <img src="/assets/login-page.png" alt="">
   <h1>Login Now</h1>
   <p>Please enter the details below to continue.</p>
 
   <form #userlogin = "ngForm" (ngSubmit) = "onClickSubmit()" >
-    <ion-intl-tel-input defaultCountryiso="ir" inputPlaceholder="9357891378" #phone [(ngModel)]="userService.user.phoneNumber" [ngModelOptions]="{standalone: true}"></ion-intl-tel-input>
-    <ion-input on-keyup="checkNationalID()" #ID [ngModelOptions]="{standalone: true}" name="N_ID" type="number" placeholder="National ID Number" [(ngModel)]="userService.user.id"></ion-input>
+    <ion-intl-tel-input defaultCountryiso="ir" inputPlaceholder="9357891378" #phone ></ion-intl-tel-input>
+    <ion-input on-keyup="checkNationalID()" #ID name="N_ID" type="number" placeholder="National ID Number"></ion-input>
     <span [hidden]="idSpan">Incorrect format for National ID</span>
     <ion-button expand="block" shape='round' clearInput type ="submit" value = "submit">Login</ion-button>
   </form>

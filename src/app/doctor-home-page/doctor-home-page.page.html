@@ -1,0 +1,109 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Habco</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-fab horizontal="end" vertical="top" slot="fixed" edge>
+    <ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list>
+      <ion-fab-button color="light">
+        <ion-icon name="logo-facebook"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button color="light">
+        <ion-icon name="logo-twitter"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button color="light">
+        <ion-icon name="logo-vimeo"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+    <div class='welcome-border'>
+
+      <h2>Welcome ,you are logged in as a <h1>Doctor</h1> </h2>
+    </div>
+
+    <div class='profile-status' (click)="edit_button_clicked()">
+      <h1 class="profile-status-messsage">Your profile status:</h1>
+      <div>
+        <h2 class="profile-status-messsage">Your cv status:
+          <div class="incomplete" *ngIf="!cv_accepted">
+            <div style="text-align: left;font-size:13px;margin-top:10px">
+              <b style="color: rgb(199, 40, 40);">Not accepted yet</b>
+
+            </div>
+          </div>
+          <div class="complete" *ngIf="cv_accepted">
+            <div style="text-align: left;font-size:13px;margin-top:10px">
+              <ion-icon slot="end" name="checkmark-circle" style="color: green;margin-right:4px;"></ion-icon>
+              <b style="color: rgb(14, 165, 64);">Accepted</b>
+
+            </div>
+
+
+          </div>
+        </h2>
+
+        <h2 class="profile-status-messsage">Your document status:
+          <div class="incomplete" *ngIf="!document_accepted">
+            <div style="text-align: left;font-size:13px;margin-top:10px">
+              <b style="color: rgb(199, 40, 40);">Not accepted yet</b>
+
+            </div>
+            <div style="text-align: center; margin-right:7%;">
+
+            <h2 style="text-align: center;font-size:12px;">Click here to complete your profile</h2>
+            </div>
+          </div>
+          <div class="complete" *ngIf="document_accepted">
+            <div style="text-align: left;font-size:13px;margin-top:10px">
+              <ion-icon slot="end" name="checkmark-circle" style="color: green;margin-right:4px;"></ion-icon>
+              <b style="color: rgb(14, 165, 64);">Accepted</b>
+
+            </div>
+            <div style="text-align: center;margin-right:8%;">
+              <h2 style="text-align: center;font-size:12px;">Click <a>here</a> to change your profile and upload your cv</h2>
+
+            </div>
+
+          </div>
+        </h2>
+      </div>
+
+    </div>
+
+    <div class="flex-container">
+
+      <div class ="item" (click)="patients_clicked()">
+        <ion-badge color="tertiary">{{this.patients_number}}</ion-badge>
+
+        <div class="image">
+
+          <img src="/assets/patient-logo.png" alt="">
+        </div>
+        <h1 style="font-size: 11px;margin-top:3px;">My Patients</h1>
+      </div>
+
+      <div class ="item" (click)="prescriptions_clicked()" >
+        <ion-badge color="tertiary">11</ion-badge>
+        <div class="image">
+          <img src="/assets/prescription-logo.png" alt="">
+        </div>
+        <h1 style="font-size: 11px;margin-top:3px;">Prescriptions
+        </h1>
+      </div>
+
+      <div class ="logout" (click)="logout_clicked()">
+        <div class="image">
+          <img src="/assets/logout.png" alt="">
+        </div>
+        <h1 style="font-size: 11px;margin-top:3px;">Logout
+        </h1>
+      </div>
+    </div>
+
+</ion-content>
+

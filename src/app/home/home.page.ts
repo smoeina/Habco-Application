@@ -49,33 +49,33 @@ export class HomePage implements OnInit{
 
 
   async getHabco(){
-    const loading = await this.loadingController.create({
-      message: 'Please wait...',
-    });
-   await loading.present();
-   this.authService.getHabcoCode().toPromise().then(resp => {
+  //   const loading = await this.loadingController.create({
+  //     message: 'Please wait...',
+  //   });
+  //  await loading.present();
+  //  this.authService.getHabcoCode().toPromise().then(resp => {
 
-    this.authService.habcoCode = resp['habcoCode'].toString();
-    this.covid = this.yesOrNo(resp['covid']);
-    this.respiratory = this.yesOrNo(resp['respiratory']);
-    this.infectional = this.yesOrNo(resp['infectional']);
-    this.imuloical = this.yesOrNo(resp['imuloical']);
-    this.diabetes = this.yesOrNo(resp['diabetes']);
-    this.staff = this.yesOrNo(resp['staff']);
-    this.infectionalArea = this.yesOrNo(resp['infectional_area']);
-    this.pet = this.yesOrNo(resp['pet']);
-    this.cardio = this.yesOrNo(resp['cardio']);
-    this.cancer = this.yesOrNo(resp['cancer'])
-    console.log(resp);
-     loading.dismiss();
+  //   this.authService.habcoCode = resp['habcoCode'].toString();
+  //   this.covid = this.yesOrNo(resp['covid']);
+  //   this.respiratory = this.yesOrNo(resp['respiratory']);
+  //   this.infectional = this.yesOrNo(resp['infectional']);
+  //   this.imuloical = this.yesOrNo(resp['imuloical']);
+  //   this.diabetes = this.yesOrNo(resp['diabetes']);
+  //   this.staff = this.yesOrNo(resp['staff']);
+  //   this.infectionalArea = this.yesOrNo(resp['infectional_area']);
+  //   this.pet = this.yesOrNo(resp['pet']);
+  //   this.cardio = this.yesOrNo(resp['cardio']);
+  //   this.cancer = this.yesOrNo(resp['cancer'])
+  //   console.log(resp);
+  //    loading.dismiss();
 
 
 
-  }).catch(error => {
-     console.log(error);
-     loading.dismiss();
-    this.showError(error);
-  });;
+  // }).catch(error => {
+  //    console.log(error);
+  //    loading.dismiss();
+  //   this.showError(error);
+  // });;
   }
   editInformations(){
     this.router.navigate(['informations']);

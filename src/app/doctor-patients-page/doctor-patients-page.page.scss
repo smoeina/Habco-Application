@@ -1,0 +1,46 @@
+
+h1,ion-title{
+  font-family: 'PlusJakarta-bold', cursive;
+  font-size: 17px;
+}
+h2,ion-list-header{
+  font-family: 'PlusJakarta-bold', cursive;
+  font-size: 13px;
+}
+h3{
+  font-family: 'PlusJakarta-bold', cursive;
+  font-size: 10px;
+}
+p{
+  color: #868686dc;
+  font-family: 'QanelasUltraLight';
+  margin-top: 15px;
+}
+.profile{
+  text-align: center;
+  background-color: white;
+  margin-right: 5%;
+  margin-left: 5%;
+  margin-top: 4%;
+  margin-bottom: 4%;
+
+  background: rgba( 255, 255, 255, 0.6 );
+  box-shadow: 0 8px 32px 0 rgba(108, 235, 58, 0.6);
+  backdrop-filter: blur( 1.2px );
+  -webkit-backdrop-filter: blur( 1.2px );
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+  border-radius: 7%;
+
+}
+ion-item{
+  border-radius: 5%;
+}
+ion-searchbar{
+  border-radius: 20px;
+}
+ion-list-header{
+  font-size: 15px;
+}
+.answer{
+  font-family: 'QanelasUltraLight';
+}

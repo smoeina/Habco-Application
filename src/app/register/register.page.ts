@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { Router } from '@angular/router';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { UserService } from '../user.service';
 import { AuthService } from '../auth.service';
 import { LoadingController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
@@ -14,14 +13,14 @@ export class RegisterPage implements OnInit {
   @ViewChild('ID') id;
   @ViewChild('email') email;
   @ViewChild('phone') phone;
-  @ViewChild('type') type;
-
   idSpan = true;
   emailSpan = true;
   phoneSpan = true;
   userType = 'user';
   step = 'None';
-  constructor(public userService: UserService,public router: Router,public authService: AuthService,
+  phone_number = '';
+  real_national_number = '';
+  constructor(public router: Router,public authService: AuthService,
     public loadingController: LoadingController,public alertController: AlertController) {
   }
 
@@ -35,7 +34,7 @@ export class RegisterPage implements OnInit {
     async showError(errorMessage) {
     const alert = await this.alertController.create({
       header: 'Error in sending data',
-      message: 'Please check you internet connection and try again later.',
+      message: errorMessage,
       buttons: ['OK']
     });
 
@@ -67,22 +66,29 @@ export class RegisterPage implements OnInit {
   }
 
 
-  async onClickSubmit(data) {
+  async onClickSubmit() {
+    console.log((this.phone.dialCodePrefix+this.phone.country.dialCode + this.phone.phoneNumber).replace(/\s/g, '').replace('+',''));
+    this.phone_number = (this.phone.dialCodePrefix+this.phone.country.dialCode + this.phone.phoneNumber).replace(/\s/g, '').replace('+','');
     if (this.step==='None'){
       this.showError('Please Enter User Type');
     }
+    if (this.id.toString().length ===9){
+      this.real_national_number= '0' + this.id.value.toString();
+      console.log(this.real_national_number);
+    }
+    else{
+      this.real_national_number= this.id.value.toString();
+      console.log('YA:'+this.real_national_number);
+    }
+
     const loading = await this.loadingController.create({
       message: 'Please wait...',
     });
     await loading.present();
-    console.log(this.authService.userService.user.phone);
+    console.log(this.real_national_number);
     if (this.idSpan && this.emailSpan &&this.phoneSpan && this.email.length !==0){
-      console.log({email:this.userService.user.email,phone
-      :this.userService.user.phone,national_number:this.userService.user.national_number,role:this.userService.user.type});
-      this.authService.register(this.userService.user.email,this.userService.user.phone
-        ,this.userService.user.type,this.userService.user.national_number).toPromise().then(resp => {
+      this.authService.register(this.email.value,this.phone_number,this.step,this.real_national_number).toPromise().then(resp => {
         console.log(resp);
-        console.log(this.phone);
         loading.dismiss();
         this.registerDoneAlert();
         this.router.navigate(['login']);
@@ -99,7 +105,6 @@ export class RegisterPage implements OnInit {
 
  }
  checkNationalID(){
-   console.log(this.id.value);
   if(this.id.value.length===10){
     this.idSpan=true;
   }
@@ -109,7 +114,6 @@ export class RegisterPage implements OnInit {
  }
 
  checkEmail(){
-  console.log(this.email.value);
  if(this.email.value.includes('@') && this.email.value.includes('.')){
    this.emailSpan=true;
  }
@@ -119,7 +123,7 @@ export class RegisterPage implements OnInit {
 }
 checkPhoneNumber(){
 
-   if(this.phone.value.internationalNumber.includes('+')){
+   if(this.phone.internationalNumber.includes('+')){
      this.phoneSpan=true;
    }
    else{
@@ -132,19 +136,15 @@ checkPhoneNumber(){
   }
   doctorClicked(){
     this.step = 'doctor';
-    this.userService.user.type = 'doctor';
   }
   nurseClicked(){
     this.step = 'nurse';
-    this.userService.user.type = 'nurse';
   }
   userClicked(){
     this.step = 'patient';
-    this.userService.user.type = 'patient';
   }
   drugStoreClicked(){
     this.step = 'pharmacist';
-    this.userService.user.type = 'pharmacist';
   }
 
 

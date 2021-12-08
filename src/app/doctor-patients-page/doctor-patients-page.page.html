@@ -1,0 +1,51 @@
+<ion-header>
+
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="doctor-home-page">Back</ion-back-button>
+    </ion-buttons>
+    <ion-title>Patients</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+
+
+
+  <ion-list>
+
+  <div *ngFor="let patient of this.dc.patients_list">
+
+    <ion-card>
+      <ion-item style="font-family: PlusJakarta-bold;">
+
+        <ion-label style="text-align: center;font-family: PlusJakarta-bold; ">
+          <ion-avatar slot="start" style="text-align: center;margin-left:35%;
+          margin-right:30%; margin-bottom:7px;font-family:PlusJakarta ">
+          <img src="https://ui-avatars.com/api/background=17D7A0&color=fff?name={{patient.user.fname}}+{{patient.user.lname}}?">
+        </ion-avatar>
+        {{patient.user.fname}} {{patient.user.lname}}</ion-label>
+      </ion-item>
+      <ion-card-content>
+        <h2>Covid Record: <div class="answer">{{myDict[patient.covid_19]}}</div></h2>
+        <h2>Cancer Record: <div class="answer">{{myDict[patient.cancer]}}</div></h2>
+        <h2>Being in dangerous area Record: <div class="answer">{{myDict[patient.dangerous_area]}}</div></h2>
+        <h2>Diabetes Record: <div class="answer">{{myDict[patient.diabetes]}}</div></h2>
+        <h2>Immunological disease Record: <div class="answer">{{myDict[patient.imuloical]}}</div></h2>
+        <h2>Living in infectious area: <div class="answer">{{myDict[patient.infectious]}}</div></h2>
+        <h2>Having pet Record: <div class="answer">{{myDict[patient.pet]}}</div></h2>
+        <h2>Respiratory disease Record: <div class="answer">{{myDict[patient.respiratory]}}</div></h2>
+        <h2>Vascular disease Record: <div class="answer">{{myDict[patient.vascular]}}</div></h2>
+
+      </ion-card-content>
+    </ion-card>
+
+
+
+
+  </div>
+
+</ion-list>
+
+
+</ion-content>

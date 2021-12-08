@@ -1,0 +1,74 @@
+
+<ion-content>
+
+  <div class='welcome-border'>
+    <qr-code value="Salam Hasan"></qr-code>
+    <h1>Your Habco ID:</h1>
+    <h1>1356977497</h1>
+  </div>
+  <div class='profile-status' (click)="edit_button_clicked()">
+    <h1 class="profile-status-messsage">Your profile status:
+      <div class="incomplete" *ngIf="!profile_is_complete">
+        <div style="text-align: left;font-size:13px;margin-top:10px">
+          <b style="color: rgb(199, 40, 40);">Incomplete</b>
+
+        </div>
+        <div style="text-align: center; margin-right:7%;">
+
+        <h2 style="text-align: center;font-size:12px;">Click here to complete your profile</h2>
+        </div>
+      </div>
+      <div class="complete" *ngIf="profile_is_complete">
+        <div style="text-align: left;font-size:13px;margin-top:10px">
+          <ion-icon slot="end" name="checkmark-circle" style="color: green;margin-right:4px;"></ion-icon>
+          <b style="color: rgb(14, 165, 64);">Completed</b>
+
+        </div>
+        <div style="text-align: center;margin-right:8%;">
+          <h2 style="text-align: center;font-size:12px;">Click <a>here</a> to change your profile</h2>
+
+        </div>
+
+      </div>
+    </h1>
+
+  </div>
+
+  <div class="flex-container" >
+
+    <div class ="item" (click)="doctors_clicked()">
+      <div class="image">
+        <img src="/assets/Doctor-Register.png" alt="">
+
+      </div>
+      <h1 class="item-title">Doctors</h1>
+
+    </div>
+
+
+    <div class ="item">
+      <div class="image">
+        <img src="/assets/Prescriptions.png" alt="">
+
+      </div>
+      <h1 style="font-size: 12px;margin-top:3px;">Prescriptions
+      </h1>
+    </div>
+    <div class ="item">
+      <div class="image">
+        <img src="/assets/Nurse-Register.png" alt="" (click)="nurses_clicked()">
+      </div>
+      <h1 style="font-size: 14px;margin-top:1.5px;">Nurses
+      </h1>
+    </div>
+    <div class ="item">
+      <div class="image" style="width:40%;margin-top:1px;text-align:center;">
+        <img src="/assets/Drugstore-Register.png"  alt="">
+      </div>
+      <h1 style="font-size: 13px;margin-top:1px;">Drug Stores
+      </h1>
+    </div>
+  </div>
+
+
+</ion-content>

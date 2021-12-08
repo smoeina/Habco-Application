@@ -1,14 +1,18 @@
+/* eslint-disable arrow-body-style */
 /* eslint-disable quote-props */
 /* eslint-disable object-shorthand */
 /* eslint-disable @typescript-eslint/naming-convention */
-import { UserService } from './user.service';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { HttpHeaders } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
 
 export class AuthService {
+  my_dict = {'Yes':true,'No':false,'YES':true,'NO':false,'MALE':'male','FEMALE':'female'};
+  otp_token ='';
+  app_token = '';
   myDictionary = {
     'Male':'Male',
     'Female':'Female',
@@ -16,63 +20,84 @@ export class AuthService {
     'No':false
   };
   habcoCode?: string;
-  real_national_number?: string;
-  constructor(private http: HttpClient,public userService: UserService) { }
+  constructor(private http: HttpClient) { }
+
   register(email,phone,type,national_number) {
-    if (national_number.toString().length ===9){
-      this.real_national_number= '0' + national_number.toString();
-      console.log(this.real_national_number);
-
-    }
-    else{
-      this.real_national_number= national_number.toString();
-      console.log('YA:'+this.real_national_number);
-
-    }
-    console.log({'email':email,'phone'
-    :phone.internationalNumber.replace(/\s/g, '').replace('+',''),'national_number':this.real_national_number,'role':type});
-  	return this.http.post('http://135.181.65.177/habco/register',{'email':email,'phone'
-    :phone.internationalNumber.replace(/\s/g, '').replace('+',''),'national_number':this.real_national_number,'role':type});
+    console.log({'email':email,
+    'phone':phone,
+    'national_number':national_number,
+    'role':type});
+  	return this.http.post('http://135.181.65.177/habco/user',
+    {'email':email,
+    'phone':phone,
+    'national_number':national_number,
+    'role':type});
   }
-  login() {
-  	 return this.http.post('http://135.181.65.177/habco/login' , this.userService.user,{responseType: 'text'});
-  }
-  sendValidationCode(){
-     return this.http.post('http://135.181.65.177/habco/otp-verify', {phoneNumber:this.userService.user.phone,
-     OTP:this.userService.OTP}
-     ,{responseType: 'text'});
-
-  }
-  getToken() {
-  	return localStorage.getItem('user');
-  }
-  getHabcoCode(){
-    console.log(this.userService.user.accessToken);
-    return this.http.post('http://51.83.171.235:5000/get-habco-code',
-    {token:localStorage.getItem('user')});
-  }
-  Edit_information(covidRecord,gender,age,respiratory,infectious
-    ,cardiovascular,cancer,immunological,diabetes,medical,infectiousArea,pet){
-    if(this.getToken()){
-      console.log('The age is:');
-      console.log(age);
-      return this.http.post('http://51.83.171.235:5000/submit-data',
-       {covidRecord:this.myDictionary[covidRecord],
-        gender:this.myDictionary[gender]
-        ,age:age
-        ,respiratory:this.myDictionary[respiratory],
-        infectious:this.myDictionary[infectious]
-        ,cardiovascular:this.myDictionary[cardiovascular],
-        cancer:this.myDictionary[cancer],
-        immunological:this.myDictionary[immunological],
-        diabetes:this.myDictionary[diabetes],
-        medical:this.myDictionary[medical],
-        infectiousArea:this.myDictionary[infectiousArea]
-        ,pet:this.myDictionary[pet],
-     token:this.getToken()}
-     ,{responseType: 'text'});
-    }
 
 
- }
+
+  login(national_number,phone_number) {
+  	 return this.http.post('http://135.181.65.177/habco/login-token' ,{'national_number':national_number,
+    'phone':phone_number});
+  }
+
+
+
+
+
+  sendValidationCode(OTP){
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer '+ this.otp_token
+    });
+    const options = { headers: headers };
+    console.log(headers);
+    console.log('INE:'+'Bearer '+ this.otp_token);
+    console.log({otp:OTP});
+     return this.http.post('http://135.181.65.177/habco/token',{otp:OTP},options);
+
+  }
+
+  Edit_information(first_name,last_name,address,covidRecord,gender,age,respiratory,infectious,
+    cardiovascular,cancer,immunological,diabetes,
+    infectiousArea,pet){
+      this.app_token = localStorage.getItem('app-token');
+      console.log(this.app_token);
+      const headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer '+ this.app_token
+      });
+      const data_to_send = {covid19:covidRecord,
+        respiratory:this.my_dict[respiratory],infectious:this.my_dict[infectious],
+        vascular:this.my_dict[cardiovascular],cancer:this.my_dict[cancer],
+        immunological:this.my_dict[immunological],diabetes:this.my_dict[diabetes],
+        dangerous_area:this.my_dict[infectiousArea],pet:this.my_dict[pet]};
+      const options = { headers: headers };
+
+      this.http.patch('http://135.181.65.177/habco/user',{fname:first_name,
+      lname:last_name,address:address,age:age,gender:this.my_dict[gender]},options).toPromise().then(
+        resp =>{
+          console.log(resp);
+        }
+
+      ).catch(error => {
+          console.log(error);
+      });
+      this.http.get('http://135.181.65.177/habco/disease_record',options).toPromise().then(resp => {
+        console.log(resp);
+        if (resp['data']==null){
+
+          return this.http.post('http://135.181.65.177/habco/disease_record',data_to_send,options);
+
+        }
+        else{
+          return this.http.patch('http://135.181.65.177/habco/disease_record',data_to_send,options);
+        }
+
+      }).catch(error => {
+          return this.http.post('http://135.181.65.177/habco/disease_record',data_to_send,options);
+      });;
+      return this.http.get('http://135.181.65.177/habco/user',options);
+  }
+
 }

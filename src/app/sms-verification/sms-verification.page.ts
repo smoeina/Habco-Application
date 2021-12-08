@@ -1,7 +1,7 @@
+/* eslint-disable @typescript-eslint/dot-notation */
 import { AuthService } from './../auth.service';
 /* eslint-disable @typescript-eslint/naming-convention */
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { UserService } from '../user.service';
 import { LoadingController, AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
 @Component({
@@ -22,7 +22,7 @@ export class SmsVerificationPage implements OnInit {
 
   };
 
-  constructor(public userService: UserService,public authService: AuthService
+  constructor(public authService: AuthService
     ,public loadingController: LoadingController,public router: Router,public alertController: AlertController) { }
 
   ngOnInit() {
@@ -30,35 +30,48 @@ export class SmsVerificationPage implements OnInit {
   async showError(errorMessage) {
     const alert = await this.alertController.create({
       header: 'Error in sending data',
-      message: 'Please check you internet connection and try again later.',
+      message: errorMessage,
       buttons: ['OK']
     });
 
     await alert.present();
   }
-   async checkCode(){
-    const loading = await this.loadingController.create({
+  async checkCode(){
+     const loading = await this.loadingController.create({
       message: 'Please wait...',
-    });
-    await loading.present();
-    if(this.first_otp.value.length===1 && this.second_otp.value.length===1 &&
-       this.third_otp.value.length===1 && this.forth_otp.value.length===1){
-        this.userService.OTP = this.OTP;
-        this.authService.sendValidationCode().toPromise().then(resp => {
-          loading.dismiss();
-          localStorage.setItem('user',resp);
-          this.router.navigate(['informations']);
+     });
+     await loading.present();
+     if(this.first_otp.value.length===1 && this.second_otp.value.length===1 &&
+        this.third_otp.value.length===1 && this.forth_otp.value.length===1){
+        this.authService.sendValidationCode(this.first_otp.value.toString()+ this.second_otp.value.toString()
+        + this.third_otp.value.toString()+this.forth_otp.value.toString()).toPromise().then(resp => {
+          console.log(resp);
+           loading.dismiss();
+           console.log(resp['data']['user']);
+           localStorage.setItem('user',resp['data']['user']);
+           console.log('app-token'+resp['data']['appToken']);
+           localStorage.setItem('app-token',resp['data']['appToken']);
 
-        }).catch(error => {
-          // console.log(error);
-          loading.dismiss();
-          this.showError(error);
-        });
-    }
-    else{
-      await loading.dismiss();
-    }
-  }
+           if (resp['data']['user']['role']==='doctor')
+           {
+            this.router.navigate(['doctor-home-page']);
+           }
+           if (resp['data']['user']['role']==='patient')
+           {
+            this.router.navigate(['user-home-page']);
+           }
+
+
+         }).catch(error => {
+           // console.log(error);
+           loading.dismiss();
+           this.showError(error);
+         });
+     }
+     else{
+       await loading.dismiss();
+     }
+   }
   otpController(event,next,prev, index){
 
 

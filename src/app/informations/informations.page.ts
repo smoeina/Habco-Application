@@ -45,18 +45,18 @@ export class InformationsPage implements OnInit {
     });
    await loading.present();
 
-    this.authService.Edit_information( this.covidRecord,this.gender,this.age,this.respiratory,this.infectious,
-      this.cardiovascular,this.cancer,this.immunological,this.diabetes,this.medical,
-      this.infectiousArea,this.pet).toPromise().then(resp => {
-        console.log(resp);
-        this.authService.habcoCode = resp;
-         loading.dismiss();
-        this.router.navigate(['home']);
+    // this.authService.Edit_information( this.covidRecord,this.gender,this.age,this.respiratory,this.infectious,
+    //   this.cardiovascular,this.cancer,this.immunological,this.diabetes,this.medical,
+    //   this.infectiousArea,this.pet).toPromise().then(resp => {
+    //     console.log(resp);
+    //     this.authService.habcoCode = resp;
+    //      loading.dismiss();
+    //     this.router.navigate(['home']);
 
-      }).catch(error => {
-         console.log(error);
-         loading.dismiss();
-        this.showError(error);
-      });;
+    //   }).catch(error => {
+    //      console.log(error);
+    //      loading.dismiss();
+    //     this.showError(error);
+    //   });;
   }
 }
