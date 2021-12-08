@@ -9,6 +9,29 @@
 </ion-header>
 
 <ion-content>
-  <ion-button (click)="add_pres_click()">Add new</ion-button>
 
+  <ion-button (click)="add_pres_click()">Add new</ion-button>
+  <ion-card *ngFor="let prescription of this.doctor_service.prescriptions_list">
+    <ion-card-header>
+      <ion-card-subtitle>Patient:
+        <ion-item>
+          {{prescription.patient.user.fname}} {{prescription.patient.user.lname}}
+        </ion-item>
+
+      </ion-card-subtitle>
+      <ion-card-subtitle>Date:
+        <ion-item>
+          <ion-datetime disabled  value="{{prescription.created_at}}" display-timezone="utc"></ion-datetime>
+        </ion-item>
+
+      </ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-card-subtitle>Text:</ion-card-subtitle>
+      <p>
+        {{prescription.text}}
+      </p>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

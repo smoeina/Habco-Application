@@ -23,6 +23,8 @@ export class DoctorHomePagePage implements OnInit {
  document_accepted = false;
  app_token = '';
  patients_number = 0;
+ prescriptions_number = 0;
+
   constructor(public router: Router,private http: HttpClient,public doctor_service: DoctorServiceService) { }
 
   edit_button_clicked(){
@@ -104,12 +106,13 @@ export class DoctorHomePagePage implements OnInit {
     const options = { headers: headers };
     this.http.get('http://135.181.65.177/habco/prescription',options).toPromise().then(resp => {
        console.log(resp);
-
+       this.doctor_service.prescriptions_list = resp['data'];
+       this.prescriptions_number = this.doctor_service.prescriptions_list.length;
      }).catch(error => {
          console.log('Error');
      });
   }
-  ngOnInit() {
+  ionViewWillEnter() {
     this.app_token = localStorage.getItem('app-token');
     this.doc_and_cv_status();
     this.get_patients();
@@ -124,5 +127,7 @@ export class DoctorHomePagePage implements OnInit {
     this.router.navigate(['doctor-prescriptions-page']);
 
   }
+  ngOnInit(){
 
+  }
 }
