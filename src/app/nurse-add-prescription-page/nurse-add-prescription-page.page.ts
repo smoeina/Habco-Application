@@ -8,11 +8,12 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { DoctorServiceService } from '../doctor-service.service';
 
 @Component({
-  selector: 'app-doctor-add-prescription',
-  templateUrl: './doctor-add-prescription.page.html',
-  styleUrls: ['./doctor-add-prescription.page.scss'],
+  selector: 'app-nurse-add-prescription-page',
+  templateUrl: './nurse-add-prescription-page.page.html',
+  styleUrls: ['./nurse-add-prescription-page.page.scss'],
 })
-export class DoctorAddPrescriptionPage implements OnInit {
+export class NurseAddPrescriptionPagePage implements OnInit {
+
   @ViewChild('selected_patient') selected_patient;
   @ViewChild('prescription') prescription_field;
 
@@ -29,7 +30,7 @@ export class DoctorAddPrescriptionPage implements OnInit {
        this.doctorService.patients_list[i].user.lname.toString()] = this.doctorService.patients_list[i].id;
      }
   }
-  // http://localhost:8000/habco/prescription/patient/26
+  // http://localhost:8000/habco/instruction/patient/26
   submit_prescription(){
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -37,7 +38,7 @@ export class DoctorAddPrescriptionPage implements OnInit {
     });
     const options = { headers: headers };
     console.log(this.selected_patient.value);
-    this.http.post('http://135.181.65.177/habco/prescription/patient/'+this.selected_patient.value
+    this.http.post('http://135.181.65.177/habco/instruction/patient/'+this.selected_patient.value
     ,{text: this.prescription_field.value}
     ,options).toPromise().then(resp => {
         console.log(resp);

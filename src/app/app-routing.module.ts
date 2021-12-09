@@ -69,6 +69,27 @@ const routes: Routes = [
     path: 'doctor-add-prescription',
     loadChildren: () => import('./doctor-add-prescription/doctor-add-prescription.module').then( m => m.DoctorAddPrescriptionPageModule)
   },
+  {
+    path: 'nurse-home-page',
+    loadChildren: () => import('./nurse-home-page/nurse-home-page.module').then( m => m.NurseHomePagePageModule)
+  },
+  {
+    path: 'nurse-patients-page',
+    loadChildren: () => import('./nurse-patients-page/nurse-patients-page.module').then( m => m.NursePatientsPagePageModule)
+  },
+  {
+    path: 'nurse-add-prescription-page',
+    loadChildren: () => import('./nurse-add-prescription-page/nurse-add-prescription-page.module').
+    then( m => m.NurseAddPrescriptionPagePageModule)
+  },
+  {
+    path: 'nurse-upload-page',
+    loadChildren: () => import('./nurse-upload-page/nurse-upload-page.module').then( m => m.NurseUploadPagePageModule)
+  },
+  {
+    path: 'nurse-prescription-page',
+    loadChildren: () => import('./nurse-prescription-page/nurse-prescription-page.module').then( m => m.NursePrescriptionPagePageModule)
+  },
 
 ];
 

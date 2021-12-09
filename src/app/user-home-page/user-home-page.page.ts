@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/dot-notation */
 /* eslint-disable quote-props */
 /* eslint-disable @typescript-eslint/naming-convention */
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -14,13 +15,15 @@ export class UserHomePagePage implements OnInit {
   // eslint-disable-next-line @typescript-eslint/naming-convention
     app_token = '';
     constructor(public router: Router,private http: HttpClient) { }
-    ngOnInit() {
+    ngOnInit(){
+    }
+    ionViewWillEnter() {
       this.app_token = localStorage.getItem('app-token');
       const headers = new HttpHeaders({
         'Content-Type': 'application/json',
         Authorization: 'Bearer '+ this.app_token,
       });
-      const options = { headers: headers };
+      const options = { headers };
       this.http.get('http://135.181.65.177/habco/user',options).toPromise().then(resp => {
         console.log(resp);
         if (resp['data']==null){

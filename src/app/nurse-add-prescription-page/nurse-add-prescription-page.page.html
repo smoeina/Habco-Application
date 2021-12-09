@@ -1,0 +1,42 @@
+<ion-header>
+
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="nurse-home-page">Back</ion-back-button>
+    </ion-buttons>
+    <ion-title>Add new prescription</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <div *ngFor="let item of patient_names_ids | keyvalue">
+
+
+  </div>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Patient:
+        <ion-item>
+          <ion-select #selected_patient  multiple="false" placeholder="Select Patient"
+          *ngFor="let item of patient_names_ids | keyvalue" >
+            <ion-select-option value="{{item.value}}">{{item.key}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-card-subtitle>Text:</ion-card-subtitle>
+      <ion-textarea #prescription placeholder="      You should care yourself...">
+      </ion-textarea>
+      <ion-button (click)="submit_prescription()">
+        <ion-icon slot="icon-only" name="add-circle"></ion-icon>
+        Submit
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+
+
+
+</ion-content>

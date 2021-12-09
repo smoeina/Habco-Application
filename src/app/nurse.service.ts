@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+
 @Injectable({
   providedIn: 'root'
 })
-export class DoctorServiceService {
+export class NurseService {
   // eslint-disable-next-line quote-props
   dict = {'true':true,'false':false,'':false,1:true,0:false};
   // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -16,6 +16,4 @@ export class DoctorServiceService {
   patients_list: any;
   prescriptions_list: any;
   constructor() { }
-
-
 }

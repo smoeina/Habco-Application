@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="nurse-home-page">Back</ion-back-button>
+    </ion-buttons>
+    <ion-title>Personal Information</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="inputs_devision">
+    <ion-title class="Quest">Please complete your personal information.</ion-title>
+<ion-item>
+    <ion-label position='floating'>
+      <ion-icon name="person"></ion-icon>
+      First Name</ion-label>
+    <ion-input type="text" placeholder="John" #fname></ion-input>
+</ion-item>
+<ion-item>
+  <ion-label position='floating'>
+    <ion-icon name="person"></ion-icon>
+    Last Name</ion-label>
+  <ion-input type="text" placeholder="Hopkins"  #lname></ion-input>
+</ion-item>
+<ion-item>
+  <ion-label position='floating'>
+    <ion-icon name="library"></ion-icon>
+    Your Proficiency:</ion-label>
+  <ion-input type="text" placeholder="Expert Nurse"  #proficiency></ion-input>
+</ion-item>
+
+<ion-item>
+  <ion-label position='floating'>
+    <ion-icon name="library"></ion-icon>
+    Upload Your CV</ion-label>
+  <ion-input accept="application/pdf" type="file" placeholder="CV" #cv (change)="cv_file_changed($event)"></ion-input>
+</ion-item>
+<ion-item>
+  <ion-label position='floating'>
+    <ion-icon name="ribbon"></ion-icon>
+    Upload your Certification:</ion-label>
+  <ion-input accept="application/pdf" type="file" placeholder="Certification" #certification (change)="certification_file_changed($event)"></ion-input>
+</ion-item>
+<div class="accept_terms">
+  <ion-checkbox color="primary" #terms></ion-checkbox>
+  <p>I agree to the terms of service</p>
+
+  <span style="color: rgb(221, 16, 16);visibility: hidden;">Please accept terms of the service</span>
+
+</div>
+
+<div style="margin-top: 10%;">
+  <ion-button (click)="upload_clicked()">
+    Upload
+  </ion-button>
+</div>
+
+  </div>
+
+
+</ion-content>
