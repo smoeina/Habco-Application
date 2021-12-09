@@ -60,7 +60,10 @@ export class SmsVerificationPage implements OnInit {
            {
             this.router.navigate(['user-home-page']);
            }
-
+           if (resp['data']['user']['role']==='nurse')
+           {
+            this.router.navigate(['nurse-home-page']);
+           }
 
          }).catch(error => {
            // console.log(error);

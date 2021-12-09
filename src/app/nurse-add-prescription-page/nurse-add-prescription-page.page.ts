@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 /* eslint-disable @typescript-eslint/naming-convention */
 import { HttpHeaders } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { DoctorServiceService } from '../doctor-service.service';
+import { NurseService } from '../nurse.service';
 
 @Component({
   selector: 'app-nurse-add-prescription-page',
@@ -20,7 +20,7 @@ export class NurseAddPrescriptionPagePage implements OnInit {
   patient_names_ids = {};
   app_token = '';
   prescription = '';
-  constructor(public doctorService: DoctorServiceService,public http: HttpClient) { }
+  constructor(public doctorService: NurseService,public http: HttpClient) { }
   ngOnInit(){
   }
   ionViewWillEnter(){
