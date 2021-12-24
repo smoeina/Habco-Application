@@ -1,0 +1,29 @@
+<ion-header>
+
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="user-doctors-page">Back</ion-back-button>
+    </ion-buttons>
+    <ion-title>Doctors</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h1 *ngIf="!this.doctors_list">There is no doctor in database yet :(</h1>
+  <ion-list>
+
+      <div class="profile" *ngFor="let doctor of this.doctors_list">
+        <ion-item lines="none" no-lines>
+          <ion-avatar slot="start">
+            <img src="https://ui-avatars.com/api/background=17D7A0&color=fff?name={{doctor.fname}}+{{doctor.lname}}?">
+          </ion-avatar>
+          <ion-label>
+            <h2>{{doctor.fname}} {{doctor.lname}}</h2>
+            <h3>{{doctor.specialization}}</h3>
+          </ion-label>
+          <ion-icon name="add-circle" slot="end" #doctor_selected
+           (click)="select_doctor(doctor)"></ion-icon>
+        </ion-item>
+      </div>
+  </ion-list>
+</ion-content>

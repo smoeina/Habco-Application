@@ -5,29 +5,24 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
+import { ErrorControllerService } from './error-controller.service';
 @Injectable({
   providedIn: 'root'
 })
 
 export class AuthService {
-  my_dict = {'Yes':true,'No':false,'YES':true,'NO':false,'MALE':'male','FEMALE':'female'};
+  my_dict = {'Yes':true,'No':false,'YES':true,'NO':false,'MALE':'male','FEMALE':'female','Male':'male','Female':'female'};
   otp_token ='';
   app_token = '';
-  myDictionary = {
-    'Male':'Male',
-    'Female':'Female',
-    'Yes':true,
-    'No':false
-  };
   habcoCode?: string;
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,public ErrorCont: ErrorControllerService) { }
 
   register(email,phone,type,national_number) {
     console.log({'email':email,
     'phone':phone,
     'national_number':national_number,
     'role':type});
-  	return this.http.post('http://135.181.65.177/habco/user',
+  	return this.http.post('https://habco.rshayanfar.ir/habco/user',
     {'email':email,
     'phone':phone,
     'national_number':national_number,
@@ -37,7 +32,7 @@ export class AuthService {
 
 
   login(national_number,phone_number) {
-  	 return this.http.post('http://135.181.65.177/habco/login-token' ,{'national_number':national_number,
+  	 return this.http.post('https://habco.rshayanfar.ir/habco/login-token' ,{'national_number':national_number,
     'phone':phone_number});
   }
 
@@ -48,13 +43,14 @@ export class AuthService {
   sendValidationCode(OTP){
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
+      Accept:'application/json',
       'Authorization': 'Bearer '+ this.otp_token
     });
     const options = { headers: headers };
     console.log(headers);
     console.log('INE:'+'Bearer '+ this.otp_token);
     console.log({otp:OTP});
-     return this.http.post('http://135.181.65.177/habco/token',{otp:OTP},options);
+     return this.http.post('https://habco.rshayanfar.ir/habco/token',{otp:OTP},options);
 
   }
 
@@ -65,39 +61,45 @@ export class AuthService {
       console.log(this.app_token);
       const headers = new HttpHeaders({
         'Content-Type': 'application/json',
+        'Accept':'application/json',
         'Authorization': 'Bearer '+ this.app_token
       });
-      const data_to_send = {covid19:covidRecord,
-        respiratory:this.my_dict[respiratory],infectious:this.my_dict[infectious],
-        vascular:this.my_dict[cardiovascular],cancer:this.my_dict[cancer],
-        immunological:this.my_dict[immunological],diabetes:this.my_dict[diabetes],
-        dangerous_area:this.my_dict[infectiousArea],pet:this.my_dict[pet]};
       const options = { headers: headers };
+      console.log(this.my_dict[gender]);
+      console.log(first_name);
+      console.log(last_name);
+      console.log(age);
+      console.log(address);
 
-      this.http.patch('http://135.181.65.177/habco/user',{fname:first_name,
+
+      this.http.patch('https://habco.rshayanfar.ir/habco/user',{fname:first_name,
       lname:last_name,address:address,age:age,gender:this.my_dict[gender]},options).toPromise().then(
         resp =>{
           console.log(resp);
         }
 
       ).catch(error => {
-          console.log(error);
+          this.ErrorCont.showError(error);
+
       });
-      this.http.get('http://135.181.65.177/habco/disease_record',options).toPromise().then(resp => {
+      console.log({covid_19:this.my_dict[covidRecord],
+        respiratory:this.my_dict[respiratory],infectious:this.my_dict[infectious],
+        vascular:this.my_dict[cardiovascular],cancer:this.my_dict[cancer],
+        imuloical:this.my_dict[immunological],diabetes:this.my_dict[diabetes],
+        dangerous_area:this.my_dict[infectiousArea],pet:this.my_dict[pet],med_staff:false});
+      this.http.patch('https://habco.rshayanfar.ir/habco/patient',{covid_19:this.my_dict[covidRecord],
+      respiratory:this.my_dict[respiratory],infectious:this.my_dict[infectious],
+      vascular:this.my_dict[cardiovascular],cancer:this.my_dict[cancer],
+      imuloical:this.my_dict[immunological],diabetes:this.my_dict[diabetes],
+      dangerous_area:this.my_dict[infectiousArea],pet:this.my_dict[pet],med_staff:false},options).toPromise().then(resp => {
         console.log(resp);
-        if (resp['data']==null){
-
-          return this.http.post('http://135.181.65.177/habco/disease_record',data_to_send,options);
-
-        }
-        else{
-          return this.http.patch('http://135.181.65.177/habco/disease_record',data_to_send,options);
-        }
-
       }).catch(error => {
-          return this.http.post('http://135.181.65.177/habco/disease_record',data_to_send,options);
+        console.log(error.toString());
+        this.ErrorCont.showError(error);
+
+
       });;
-      return this.http.get('http://135.181.65.177/habco/user',options);
+      return this.http.get('https://habco.rshayanfar.ir/habco/patient/me',options);
   }
 
 }

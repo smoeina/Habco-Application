@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { NurseService } from '../nurse.service';
+import { ErrorControllerService } from '../error-controller.service';
 @Component({
   selector: 'app-nurse-home-page',
   templateUrl: './nurse-home-page.page.html',
@@ -24,7 +25,8 @@ export class NurseHomePagePage implements OnInit {
  patients_number = 0;
  prescriptions_number = 0;
 
-  constructor(public router: Router,private http: HttpClient,public nurse_service: NurseService) { }
+  constructor(public router: Router,private http: HttpClient,
+    public nurse_service: NurseService,public ErrorCont: ErrorControllerService) { }
 
   edit_button_clicked(){
     this.router.navigate(['nurse-upload-page']);
@@ -35,12 +37,12 @@ export class NurseHomePagePage implements OnInit {
       Authorization: 'Bearer '+ this.app_token,
     });
     const options = { headers: headers };
-    this.http.delete('http://135.181.65.177/habco/token',options).toPromise().then(resp => {
+    this.http.delete('https://habco.rshayanfar.ir/habco/token',options).toPromise().then(resp => {
       localStorage.removeItem('app-token');
       this.router.navigate(['welcome']);
 
     }).catch(error => {
-        console.log('Error');
+      this.ErrorCont.showError(error);
     });;
   }
   doc_and_cv_status(){
@@ -50,34 +52,39 @@ export class NurseHomePagePage implements OnInit {
       Authorization: 'Bearer '+ this.app_token,
     });
     const options = { headers: headers };
-    this.http.get('http://135.181.65.177/habco/user',options).toPromise().then(resp => {
+    this.http.get('https://habco.rshayanfar.ir/habco/user',options).toPromise().then(resp => {
       localStorage.setItem('user_id', resp['data']['id']);
 
     }).catch(error => {
-        console.log('Error');
+      this.ErrorCont.showError(error);
+
     });
 
     if (localStorage.getItem('user_id')){
 
-      this.http.get('http://135.181.65.177/habco/nurse/'+localStorage.getItem('user_id').toString(),options).toPromise().then(resp => {
+      this.http.get('https://habco.rshayanfar.ir/habco/nurse/'
+      +localStorage.getItem('user_id').toString(),options).toPromise().then(resp => {
 
       this.cv_id = resp['data']['cv_id'];
       this.document_id = resp['data']['document_id'];
 
-      this.http.get('http://135.181.65.177/habco/document/'+this.document_id,options).toPromise().then(rest => {
+      this.http.get('https://habco.rshayanfar.ir/habco/document/'+this.document_id,options).toPromise().then(rest => {
         this.document_accepted = this.dict[rest['data']['verified']];
        }).catch(error => {
-           console.log('Error');
+        this.ErrorCont.showError(error);
+
        });
-       this.http.get('http://135.181.65.177/habco/document/'+this.cv_id,options).toPromise().then(response => {
+       this.http.get('https://habco.rshayanfar.ir/habco/document/'+this.cv_id,options).toPromise().then(response => {
          this.cv_accepted = this.dict[response['data']['verified']];
         }).catch(error => {
-            console.log('Error');
+          this.ErrorCont.showError(error);
+
         });
 
 
       }).catch(error => {
-          console.log('Error');
+        this.ErrorCont.showError(error);
+
       });
 
     }
@@ -90,11 +97,12 @@ export class NurseHomePagePage implements OnInit {
       Authorization: 'Bearer '+ this.app_token,
     });
     const options = { headers: headers };
-    this.http.get('http://135.181.65.177/habco/patient',options).toPromise().then(resp => {
+    this.http.get('https://habco.rshayanfar.ir/habco/patient',options).toPromise().then(resp => {
        this.nurse_service.patients_list = resp['data'];
        this.patients_number = this.nurse_service.patients_list.length;
     }).catch(error => {
-        console.log('Error');
+      this.ErrorCont.showError(error);
+
     });
   }
   get_prescriptions(){
@@ -103,12 +111,13 @@ export class NurseHomePagePage implements OnInit {
       Authorization: 'Bearer '+ this.app_token,
     });
     const options = { headers: headers };
-    this.http.get('http://135.181.65.177/habco/prescription',options).toPromise().then(resp => {
+    this.http.get('https://habco.rshayanfar.ir/habco/prescription',options).toPromise().then(resp => {
        console.log(resp);
        this.nurse_service.prescriptions_list = resp['data'];
        this.prescriptions_number = this.nurse_service.prescriptions_list.length;
      }).catch(error => {
-         console.log('Error');
+      this.ErrorCont.showError(error);
+
      });
   }
   ionViewWillEnter() {

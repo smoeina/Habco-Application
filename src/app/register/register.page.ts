@@ -1,9 +1,12 @@
+import { ErrorControllerService } from './../error-controller.service';
+import { ErrorCollector } from '@angular/compiler';
 /* eslint-disable @typescript-eslint/naming-convention */
 import { Router } from '@angular/router';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { LoadingController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
+import { range } from 'rxjs';
 @Component({
   selector: 'app-register',
   templateUrl: './register.page.html',
@@ -21,7 +24,8 @@ export class RegisterPage implements OnInit {
   phone_number = '';
   real_national_number = '';
   constructor(public router: Router,public authService: AuthService,
-    public loadingController: LoadingController,public alertController: AlertController) {
+    public loadingController: LoadingController,public alertController: AlertController,
+    public ErrorCont: ErrorControllerService) {
   }
 
 
@@ -29,17 +33,6 @@ export class RegisterPage implements OnInit {
 
   }
 
-
-
-    async showError(errorMessage) {
-    const alert = await this.alertController.create({
-      header: 'Error in sending data',
-      message: errorMessage,
-      buttons: ['OK']
-    });
-
-    await alert.present();
-  }
 
 
   async checkInputValues() {
@@ -70,11 +63,15 @@ export class RegisterPage implements OnInit {
     console.log((this.phone.dialCodePrefix+this.phone.country.dialCode + this.phone.phoneNumber).replace(/\s/g, '').replace('+',''));
     this.phone_number = (this.phone.dialCodePrefix+this.phone.country.dialCode + this.phone.phoneNumber).replace(/\s/g, '').replace('+','');
     if (this.step==='None'){
-      this.showError('Please Enter User Type');
+      this.ErrorCont.showErrorMessage('Please Enter User Type');
+      return;
     }
-    if (this.id.toString().length ===9){
-      this.real_national_number= '0' + this.id.value.toString();
-      console.log(this.real_national_number);
+    if (this.id.toString().length <10 ){
+      this.real_national_number = this.id.value.toString();
+      while(this.real_national_number.length <10){
+        console.log(this.real_national_number);
+        this.real_national_number= '0' + this.real_national_number;
+      }
     }
     else{
       this.real_national_number= this.id.value.toString();
@@ -96,7 +93,7 @@ export class RegisterPage implements OnInit {
       }).catch(error => {
         // console.log(error);
         loading.dismiss();
-        this.showError(error);
+        this.ErrorCont.showError(error);
       });
     }
     else{

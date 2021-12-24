@@ -24,7 +24,7 @@ export class NurseUploadPagePage implements OnInit {
   cv_uploaded = false;
   certification_uploaded = false;
   constructor(public http: HttpClient,public error_controller: ErrorControllerService,
-    public alertController: AlertController,public router: Router) {
+    public alertController: AlertController,public router: Router,public loadingController: LoadingController) {
   }
   ngOnInit() {
     this.app_token = localStorage.getItem('app-token');
@@ -63,7 +63,11 @@ export class NurseUploadPagePage implements OnInit {
 
     await alert.present();
   }
-  upload_clicked(){
+  async upload_clicked(){
+    const loading = await this.loadingController.create({
+      message: 'Please wait...',
+    });
+   await loading.present();
     console.log(this.terms);
     if (this.terms.checked ===false){
       this.error_controller.showError('Please Accept our terms...');
@@ -76,48 +80,57 @@ export class NurseUploadPagePage implements OnInit {
     const options = { headers };
     if (this.certification_uploaded && this.cv_uploaded){
 
+      this.http.post('https://habco.rshayanfar.ir/habco/document',{file:this.cv_base64[1],file_type:'application/pdf',type:'cv'}
+      ,options).toPromise().then(resp => {
+        console.log(resp);
+
+      }).catch(error => {
+          console.log('Error');
+          loading.dismiss();
+          this.error_controller.showError(error);
+      });;
+
+      this.http.post('https://habco.rshayanfar.ir/habco/document',
+      {file:this.certification_base64[1],file_type:'application/pdf',type:'document'}
+      ,options).toPromise().then(resp => {
+        console.log(resp);
+
+      }).catch(error => {
+          console.log('Error');
+          loading.dismiss();
+          this.error_controller.showError(error);
+      });;
+      this.http.patch('https://habco.rshayanfar.ir/habco/user',{fname:this.fname.value,
+        lname:this.lname.value},options).toPromise().then(
+          resp =>{
+            console.log(resp);
+          }
+
+        ).catch(error => {
+          loading.dismiss();
+          this.error_controller.showError(error);
+        });
+        console.log(this.proficiency.value);
+        this.http.put('https://habco.rshayanfar.ir/habco/nurse',{specialization:this.proficiency.value}
+        ,options).toPromise().then(
+          resp =>{
+            console.log(resp);
+            loading.dismiss();
+            this.showAlert('Done','Upload Information Success','Wait till our supervisors check your info.');
+            this.router.navigate(['nurse-home-page']);
+          }
+        ).catch(error => {
+          loading.dismiss();
+          this.error_controller.showError(error);
+        });
+
     }
     else{
-      this.error_controller.showError('Please Upload your CV and Certification file...');
+      loading.dismiss();
+      this.error_controller.showErrorMessage('Please Upload your CV and Certification file...');
     }
-    this.http.post('http://135.181.65.177/habco/document',{file:this.cv_base64[1],file_type:'application/pdf',type:'cv'}
-    ,options).toPromise().then(resp => {
-      console.log(resp);
+    loading.dismiss();
 
-    }).catch(error => {
-        console.log('Error');
-        this.error_controller.showError(error);
-    });;
-
-    this.http.post('http://135.181.65.177/habco/document',{file:this.certification_base64[1],file_type:'application/pdf',type:'document'}
-    ,options).toPromise().then(resp => {
-      console.log(resp);
-
-    }).catch(error => {
-        console.log('Error');
-        this.error_controller.showError(error);
-    });;
-    this.http.patch('http://135.181.65.177/habco/user',{fname:this.fname.value,
-      lname:this.lname.value},options).toPromise().then(
-        resp =>{
-          console.log(resp);
-        }
-
-      ).catch(error => {
-        this.error_controller.showError(error);
-      });
-      console.log(this.proficiency.value);
-      this.http.put('http://135.181.65.177/habco/nurse',{specialization:this.proficiency.value}
-      ,options).toPromise().then(
-        resp =>{
-          console.log(resp);
-          this.showAlert('Done','Upload Information Success','Wait till our supervisors check your info.');
-          this.router.navigate(['nurse-home-page']);
-        }
-
-      ).catch(error => {
-        this.error_controller.showError(error);
-      });
   }
 
 }

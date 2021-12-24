@@ -14,6 +14,7 @@
     <ion-list-header>
       My Nurses
     </ion-list-header>
+    <h1 *ngIf="!this.have_my_nurse">You have not select a nurse yet</h1>
 
 
     <div *ngFor="let nurse of this.my_nurses">
@@ -42,6 +43,8 @@
     <ion-list-header>
       All Nurses
     </ion-list-header>
+    <h1 *ngIf="!this.have_of_nurses">There is not any nurse in database :(</h1>
+
     <div *ngFor="let nurse of this.nurses_list">
       <div class="profile">
         <ion-item lines="none" no-lines>

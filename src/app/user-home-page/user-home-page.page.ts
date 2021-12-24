@@ -4,6 +4,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoadingController } from '@ionic/angular';
+import { ErrorControllerService } from '../error-controller.service';
 @Component({
   selector: 'app-user-home-page',
   templateUrl: './user-home-page.page.html',
@@ -12,30 +14,53 @@ import { Router } from '@angular/router';
 export class UserHomePagePage implements OnInit {
   dict = {'true':true,'false':false,'':false};
   profile_is_complete = false;
+  habco_id = '';
   // eslint-disable-next-line @typescript-eslint/naming-convention
     app_token = '';
-    constructor(public router: Router,private http: HttpClient) { }
+
+    constructor(public router: Router,private http: HttpClient,
+      public loadingController: LoadingController,public ErrorCont: ErrorControllerService) { }
     ngOnInit(){
     }
-    ionViewWillEnter() {
+
+    async get_id(){
+      const loading = await this.loadingController.create({
+        message: 'Please wait...',
+      });
+      await loading.present();
       this.app_token = localStorage.getItem('app-token');
       const headers = new HttpHeaders({
         'Content-Type': 'application/json',
+        'Accept':'application/json',
         Authorization: 'Bearer '+ this.app_token,
       });
       const options = { headers };
-      this.http.get('http://135.181.65.177/habco/user',options).toPromise().then(resp => {
+      this.http.get('https://habco.rshayanfar.ir/habco/patient/habco_id',options).toPromise().then(async resp => {
         console.log(resp);
-        if (resp['data']==null){
-            this.profile_is_complete = false;
+
+        if (resp['status']==='failure'){
+          this.habco_id = resp['message'];
+          this.profile_is_complete = false;
+          await loading.dismiss();
+
         }
-        else{
+        if(resp['status']==='success'){
+          this.habco_id = resp['data'];
           this.profile_is_complete = true;
+          await loading.dismiss();
+
         }
-      }).catch(error => {
+
+      }).catch(async error => {
           console.log('Error');
           console.log(error);
+          this.ErrorCont.showError(error);
+          await loading.dismiss();
+
       });;
+    }
+    ionViewWillEnter() {
+      this.get_id();
     }
     edit_button_clicked(){
       console.log('Clicked');
@@ -48,6 +73,10 @@ export class UserHomePagePage implements OnInit {
     }
     nurses_clicked(){
       this.router.navigate(['user-nurses-page']);
+
+    }
+    prescription_clicked(){
+      this.router.navigate(['user-prescriptions-page']);
 
     }
 }

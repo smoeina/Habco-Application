@@ -12,9 +12,8 @@ export class PatientEditInfoPage implements OnInit {
   @ViewChild('lastName') lastName;
   @ViewChild('address') address;
 
-
-  covidRecord: string;
   gender: string;
+  covidRecord: string;
   age: string;
   respiratory: string;
   infectious: string;
@@ -49,14 +48,14 @@ export class PatientEditInfoPage implements OnInit {
       message: 'Please wait...',
     });
    await loading.present();
-
+   console.log('jens');
+    console.log(this.gender);
     this.authService.Edit_information(this.firstName.value,this.lastName.value ,
       this.address.value,this.covidRecord,this.gender,this.age,this.respiratory,this.infectious,
        this.cardiovascular,this.cancer,this.immunological,this.diabetes,
-       this.infectiousArea,this.pet).toPromise().then(resp => {
+       this.infectiousArea,this.pet)
+       .toPromise().then(resp => {
          console.log(resp);
-         localStorage.setItem('disease_record',resp['data']);
-         localStorage.setItem('profile_completed','true');
           loading.dismiss();
          this.router.navigate(['user-home-page']);
        }).catch(error => {

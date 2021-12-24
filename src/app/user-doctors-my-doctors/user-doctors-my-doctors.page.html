@@ -1,0 +1,32 @@
+<ion-header>
+
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="user-doctors-page">Back</ion-back-button>
+    </ion-buttons>
+    <ion-title>Doctors</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+
+    <h1 *ngIf="!this.my_doctors">You have not select a doctor yet</h1>
+
+    <div *ngFor="let doctor of this.my_doctors">
+      <div class="profile">
+        <ion-item lines="none" no-lines>
+          <ion-avatar slot="start">
+            <img src="https://ui-avatars.com/api/background=17D7A0&color=fff?name={{doctor.user.fname}}+{{doctor.user.lname}}?">
+          </ion-avatar>
+          <ion-label>
+            <h2>{{doctor.user.fname}} {{doctor.user.lname}}</h2>
+            <h3>{{doctor.specialization}}</h3>
+          </ion-label>
+          <ion-icon name="chatbubbles-sharp" slot="end" (click)="whats_app_clicked(doctor)"></ion-icon>
+        </ion-item>
+      </div>
+    </div>
+
+  </ion-list>
+</ion-content>

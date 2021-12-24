@@ -1,0 +1,63 @@
+<ion-header>
+
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="user-home-page">Back</ion-back-button>
+    </ion-buttons>
+    <ion-title>Presciptions</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card *ngFor="let prescription of this.prescriptions">
+    <ion-card-header>
+      <ion-card-subtitle>Doctor:
+        <ion-item>
+          {{prescription.doctor.user.fname}} {{prescription.doctor.user.lname}}
+        </ion-item>
+
+      </ion-card-subtitle>
+      <ion-card-subtitle>Date:
+        <ion-item>
+          <ion-datetime disabled  value="{{prescription.created_at}}" display-timezone="utc"></ion-datetime>
+        </ion-item>
+
+      </ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-card-subtitle>Text:</ion-card-subtitle>
+      <p>
+        {{prescription.text}}
+      </p>
+    </ion-card-content>
+  </ion-card>
+
+
+  <!-- <h1>Instructions</h1>
+
+  <ion-card *ngFor="let instruction of this.instructions">
+    <ion-card-header>
+      <ion-card-subtitle>Nurse:
+        <ion-item>
+          {{instruction.nurse.user.fname}} {{instruction.nurse.user.lname}}
+        </ion-item>
+
+      </ion-card-subtitle>
+      <ion-card-subtitle>Date:
+        <ion-item>
+          <ion-datetime disabled  value="{{instruction.created_at}}" display-timezone="utc"></ion-datetime>
+        </ion-item>
+
+      </ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-card-subtitle>Text:</ion-card-subtitle>
+      <p>
+        {{instruction.text}}
+      </p>
+    </ion-card-content>
+  </ion-card> -->
+</ion-content>

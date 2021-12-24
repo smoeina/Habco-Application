@@ -1,3 +1,5 @@
+import { ErrorControllerService } from './../error-controller.service';
+import { ErrorCollector } from '@angular/compiler';
 /* eslint-disable @typescript-eslint/naming-convention */
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
@@ -19,22 +21,13 @@ export class LoginPage implements OnInit {
   realNationalNumber = '';
 
   constructor(public router: Router,public authService: AuthService,
- public alertController: AlertController,public loadingController: LoadingController) {
+ public alertController: AlertController,public loadingController: LoadingController,
+ public ErrorCont: ErrorControllerService) {
   }
 
 
   ngOnInit() {
 
-  }
-
-    async showError(errorMessage) {
-    const alert = await this.alertController.create({
-      header: 'Error in sending data',
-      message: errorMessage.error,
-      buttons: ['OK']
-    });
-
-    await alert.present();
   }
 
 
@@ -54,8 +47,11 @@ export class LoginPage implements OnInit {
      });
     await loading.present();
     if (this.idSpan &&this.phoneSpan){
-      if (this.nationalNumber.value.toString().length ===9){
+      if (this.nationalNumber.value.toString().length <10){
         this.realNationalNumber= '0' + this.nationalNumber.value.toString();
+        while(this.realNationalNumber.length<10){
+          this.realNationalNumber= '0' + this.realNationalNumber.toString();
+        }
         console.log(this.realNationalNumber);
       }
       else{
@@ -76,7 +72,7 @@ export class LoginPage implements OnInit {
       }).catch(error => {
          console.log(error);
          loading.dismiss();
-        this.showError(error);
+        this.ErrorCont.showError(error);
       });
     }
     else{

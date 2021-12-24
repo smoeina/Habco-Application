@@ -1,9 +1,11 @@
+import { ErrorControllerService } from './../error-controller.service';
 /* eslint-disable @typescript-eslint/dot-notation */
 import { AuthService } from './../auth.service';
 /* eslint-disable @typescript-eslint/naming-convention */
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { LoadingController, AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { ErrorCollector } from '@angular/compiler';
 @Component({
   selector: 'app-sms-verification',
   templateUrl: './sms-verification.page.html',
@@ -23,19 +25,12 @@ export class SmsVerificationPage implements OnInit {
   };
 
   constructor(public authService: AuthService
-    ,public loadingController: LoadingController,public router: Router,public alertController: AlertController) { }
+    ,public loadingController: LoadingController,public router: Router,public alertController: AlertController
+    ,public ErrorController: ErrorControllerService) { }
 
   ngOnInit() {
   }
-  async showError(errorMessage) {
-    const alert = await this.alertController.create({
-      header: 'Error in sending data',
-      message: errorMessage,
-      buttons: ['OK']
-    });
 
-    await alert.present();
-  }
   async checkCode(){
      const loading = await this.loadingController.create({
       message: 'Please wait...',
@@ -66,9 +61,9 @@ export class SmsVerificationPage implements OnInit {
            }
 
          }).catch(error => {
-           // console.log(error);
+           console.log(error.error);
            loading.dismiss();
-           this.showError(error);
+           this.ErrorController.showError(error);
          });
      }
      else{

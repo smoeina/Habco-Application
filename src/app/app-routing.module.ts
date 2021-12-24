@@ -1,12 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from './auth.guard';
 const routes: Routes = [
-  {
-    path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule),
-    canActivate: [AuthGuard]
-  },
   {
     path: '',
     redirectTo: 'welcome',
@@ -24,10 +18,6 @@ const routes: Routes = [
     path: 'register',
     loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
   },
-  {
-    path: 'informations',
-    loadChildren: () => import('./informations/informations.module').then( m => m.InformationsPageModule),
-    canActivate: [AuthGuard] },
   {
     path: 'sms-verification',
     loadChildren: () => import('./sms-verification/sms-verification.module').then( m => m.SmsVerificationPageModule)
@@ -89,6 +79,18 @@ const routes: Routes = [
   {
     path: 'nurse-prescription-page',
     loadChildren: () => import('./nurse-prescription-page/nurse-prescription-page.module').then( m => m.NursePrescriptionPagePageModule)
+  },
+  {
+    path: 'user-prescriptions-page',
+    loadChildren: () => import('./user-prescriptions-page/user-prescriptions-page.module').then( m => m.UserPrescriptionsPagePageModule)
+  },
+  {
+    path: 'user-doctors-all-doctors',
+    loadChildren: () => import('./user-doctors-all-doctors/user-doctors-all-doctors.module').then( m => m.UserDoctorsAllDoctorsPageModule)
+  },
+  {
+    path: 'user-doctors-my-doctors',
+    loadChildren: () => import('./user-doctors-my-doctors/user-doctors-my-doctors.module').then( m => m.UserDoctorsMyDoctorsPageModule)
   },
 
 ];

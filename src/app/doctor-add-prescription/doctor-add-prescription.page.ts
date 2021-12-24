@@ -1,3 +1,4 @@
+import { ErrorControllerService } from './../error-controller.service';
 /* eslint-disable object-shorthand */
 /* eslint-disable @typescript-eslint/dot-notation */
 import { HttpClient } from '@angular/common/http';
@@ -6,6 +7,7 @@ import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { DoctorServiceService } from '../doctor-service.service';
+import { LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-doctor-add-prescription',
@@ -19,7 +21,8 @@ export class DoctorAddPrescriptionPage implements OnInit {
   patient_names_ids = {};
   app_token = '';
   prescription = '';
-  constructor(public doctorService: DoctorServiceService,public http: HttpClient) { }
+  constructor(public doctorService: DoctorServiceService,public http: HttpClient,
+    public ErrorCont: ErrorControllerService,public loadingController: LoadingController) { }
   ngOnInit(){
   }
   ionViewWillEnter(){
@@ -30,20 +33,28 @@ export class DoctorAddPrescriptionPage implements OnInit {
      }
   }
   // http://localhost:8000/habco/prescription/patient/26
-  submit_prescription(){
+  async submit_prescription(){
+    const loading = await this.loadingController.create({
+      message: 'Please wait...',
+    });
+   await loading.present();
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: 'Bearer '+ this.app_token,
     });
     const options = { headers: headers };
     console.log(this.selected_patient.value);
-    this.http.post('http://135.181.65.177/habco/prescription/patient/'+this.selected_patient.value
+    loading.present();
+    this.http.post('https://habco.rshayanfar.ir/habco/prescription/patient'+this.selected_patient.value
     ,{text: this.prescription_field.value}
     ,options).toPromise().then(resp => {
         console.log(resp);
 
      }).catch(error => {
           console.log('Error');
+          this.ErrorCont.showError(error);
+          loading.dismiss();
+
       });
   }
 }

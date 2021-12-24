@@ -1,3 +1,5 @@
+import { LoadingController } from '@ionic/angular';
+import { ErrorControllerService } from './../error-controller.service';
 /* eslint-disable object-shorthand */
 /* eslint-disable @typescript-eslint/dot-notation */
 import { HttpClient } from '@angular/common/http';
@@ -20,7 +22,8 @@ export class NurseAddPrescriptionPagePage implements OnInit {
   patient_names_ids = {};
   app_token = '';
   prescription = '';
-  constructor(public doctorService: NurseService,public http: HttpClient) { }
+  constructor(public doctorService: NurseService,public http: HttpClient,
+    public ErrorCont: ErrorControllerService,public loadingController: LoadingController) { }
   ngOnInit(){
   }
   ionViewWillEnter(){
@@ -31,20 +34,26 @@ export class NurseAddPrescriptionPagePage implements OnInit {
      }
   }
   // http://localhost:8000/habco/instruction/patient/26
-  submit_prescription(){
+  async submit_prescription(){
+    const loading = await this.loadingController.create({
+      message: 'Please wait...',
+    });
+    await loading.present();
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: 'Bearer '+ this.app_token,
     });
     const options = { headers: headers };
     console.log(this.selected_patient.value);
-    this.http.post('http://135.181.65.177/habco/instruction/patient/'+this.selected_patient.value
+    this.http.post('https://habco.rshayanfar.ir/habco/instruction/patient'+this.selected_patient.value
     ,{text: this.prescription_field.value}
     ,options).toPromise().then(resp => {
         console.log(resp);
 
      }).catch(error => {
-          console.log('Error');
+      this.ErrorCont.showError(error);
+      loading.dismiss();
+
       });
   }
 }

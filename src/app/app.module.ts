@@ -12,6 +12,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { IonIntlTelInputModule } from 'ion-intl-tel-input';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HTTP } from '@ionic-native/http/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,7 +20,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [FormsModule,BrowserModule,HttpClientModule ,IonicModule.forRoot(),
      AppRoutingModule,IonIntlTelInputModule,FormsModule,
      ReactiveFormsModule,PatientEditInfoPageModule],
-  providers: [HttpClientModule,{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [HttpClientModule,HTTP,{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
 export class AppModule {

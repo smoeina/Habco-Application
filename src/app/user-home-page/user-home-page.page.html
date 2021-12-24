@@ -1,10 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Habco</ion-title>
+  </ion-toolbar>
+</ion-header>
 
 <ion-content>
 
+  <div class='welcome-border-habco'>
+    <div class="qr-code">
+      <qr-code  value={{this.habco_id}}></qr-code>
+    </div>
+    <h1 class='habco_id'>HABCO code</h1>
+  </div>
   <div class='welcome-border'>
-    <qr-code value="Salam Hasan"></qr-code>
+
     <h1>Your Habco ID:</h1>
-    <h1>1356977497</h1>
+    <h1>{{this.habco_id}}</h1>
   </div>
   <div class='profile-status' (click)="edit_button_clicked()">
     <h1 class="profile-status-messsage">Your profile status:
@@ -38,7 +49,7 @@
 
     <div class ="item" (click)="doctors_clicked()">
       <div class="image">
-        <img src="/assets/Doctor-Register.png" alt="">
+        <img src="/assets/Doctor-user-homepage.png" alt="">
 
       </div>
       <h1 class="item-title">Doctors</h1>
@@ -48,24 +59,24 @@
 
     <div class ="item">
       <div class="image">
-        <img src="/assets/Prescriptions.png" alt="">
+        <img src="/assets/Prescription.png" (click)="prescription_clicked()">
 
       </div>
-      <h1 style="font-size: 12px;margin-top:3px;">Prescriptions
+      <h1 class="item-title">Prescriptions
       </h1>
     </div>
     <div class ="item">
       <div class="image">
-        <img src="/assets/Nurse-Register.png" alt="" (click)="nurses_clicked()">
+        <img src="/assets/nurse.png" alt="" (click)="nurses_clicked()">
       </div>
-      <h1 style="font-size: 14px;margin-top:1.5px;">Nurses
+      <h1 class="item-title">Nurses
       </h1>
     </div>
     <div class ="item">
-      <div class="image" style="width:40%;margin-top:1px;text-align:center;">
-        <img src="/assets/Drugstore-Register.png"  alt="">
+      <div class="image" >
+        <img src="/assets/Drugstore.png" alt="">
       </div>
-      <h1 style="font-size: 13px;margin-top:1px;">Drug Stores
+      <h1 class="item-title">Drug Stores
       </h1>
     </div>
   </div>

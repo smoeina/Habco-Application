@@ -16,27 +16,35 @@ export class UserNursesPagePage implements OnInit {
   app_token = '';
   nurses_list: any;
   my_nurses: any;
+  have_my_nurse = false;
+  have_of_nurses = false;
     constructor(public router: Router,private http: HttpClient,
       public errorController: ErrorControllerService,public alertController: AlertController) { }
     ngOnInit() {
       this.app_token = localStorage.getItem('app-token');
       const headers = new HttpHeaders({
         'Content-Type': 'application/json',
+        'Accept':'application/json',
         Authorization: 'Bearer '+ this.app_token,
       });
       const options = { headers };
-      this.http.get('http://135.181.65.177/habco/nurse',options).toPromise().then(resp => {
+      this.http.get('https://habco.rshayanfar.ir/habco/nurse',options).toPromise().then(resp => {
         console.log(resp);
         this.nurses_list = resp['data'];
+        if (this.nurses_list.length>0){
+          this.have_of_nurses = true;
+        }
         console.log(this.nurses_list);
       }).catch(error => {
           console.log('Error');
           this.errorController.showError(error);
       });
-      this.http.get('http://135.181.65.177/habco/patient/nurse/',options).toPromise().then(resp => {
+      this.http.get('https://habco.rshayanfar.ir/habco/patient/nurse',options).toPromise().then(resp => {
         console.log(resp);
         this.my_nurses = resp['data'];
-
+        if (this.my_nurses.length>0){
+          this.have_my_nurse = true;
+        }
       }).catch(error => {
           console.log('Error');
           this.errorController.showError(error);
@@ -64,9 +72,9 @@ export class UserNursesPagePage implements OnInit {
             {
               text: 'Yes',
               handler: () => {
-                this.http.post('http://135.181.65.177/habco/patient/nurse/'+nurse.id,{},options).toPromise().then(resp => {
+                this.http.post('https://habco.rshayanfar.ir/habco/patient/nurse/'+nurse.id,{},options).toPromise().then(resp => {
                   console.log(resp);
-                  this.http.get('http://135.181.65.177/habco/patient/nurse/',options).toPromise().then(response => {
+                  this.http.get('https://habco.rshayanfar.ir/habco/patient/nurse',options).toPromise().then(response => {
                   console.log(response);
                   this.my_nurses = response['data'];
 

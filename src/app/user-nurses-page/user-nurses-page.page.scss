@@ -1,5 +1,4 @@
-
-h1,ion-title{
+ion-title{
   font-family: 'PlusJakarta-bold', cursive;
   font-size: 17px;
 }
@@ -18,26 +17,42 @@ p{
 }
 .profile{
   text-align: center;
-  background-color: white;
   margin-right: 5%;
   margin-left: 5%;
   margin-top: 4%;
   margin-bottom: 4%;
+  border-style:groove;
+  background: rgba( 255, 255, 255, 0.7 );
 
-  background: rgba( 255, 255, 255, 0.6 );
-  box-shadow: 0 8px 32px 0 rgba(108, 235, 58, 0.6);
-  backdrop-filter: blur( 1.2px );
-  -webkit-backdrop-filter: blur( 1.2px );
-  border: 1px solid rgba( 255, 255, 255, 0.18 );
-  border-radius: 7%;
+box-shadow: 2px 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 2.5px );
+-webkit-backdrop-filter: blur( 2.5px );
+border-radius: 10px;
+border: 3px solid rgba( 255, 255, 255, 0.3 );
 
 }
 ion-item{
   border-radius: 5%;
 }
-ion-searchbar{
-  border-radius: 20px;
-}
+
 ion-list-header{
   font-size: 15px;
+}
+ion-content{
+  --ion-background-color: linear-gradient(to top, #34e67e, #abf853 80%);
+}
+ion-toolbar {
+  --background: #abf853;
+
+}
+h1{
+  font-family: 'PlusJakarta', cursive;
+  font-size: 17px;
+  margin-top: 10%;
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+ion-list{
+  border-bottom-color: transparent;
 }

@@ -26,7 +26,7 @@ export class DoctorUploadPage implements OnInit {
   cv_uploaded = false;
   certification_uploaded = false;
   constructor(public http: HttpClient,public error_controller: ErrorControllerService,
-    public alertController: AlertController,public router: Router) {
+    public alertController: AlertController,public router: Router,public loadingController: LoadingController) {
   }
 
 
@@ -67,7 +67,7 @@ export class DoctorUploadPage implements OnInit {
 
     await alert.present();
   }
-  upload_clicked(){
+  async upload_clicked(){
     console.log(this.terms);
     if (this.terms.checked ===false){
       this.error_controller.showError('Please Accept our terms...');
@@ -78,40 +78,43 @@ export class DoctorUploadPage implements OnInit {
       Authorization: 'Bearer '+ this.app_token,
     });
     const options = { headers };
+    const loading = await this.loadingController.create({
+      message: 'Please wait...',
+    });
     if (this.certification_uploaded && this.cv_uploaded){
-
-    }
-    else{
-      this.error_controller.showError('Please Upload your CV and Certification file...');
-    }
-    this.http.post('http://135.181.65.177/habco/document',{file:this.cv_base64[1],file_type:'application/pdf',type:'cv'}
+      await loading.present();
+      this.http.post('https://habco.rshayanfar.ir/habco/document',{file:this.cv_base64[1],file_type:'application/pdf',type:'cv'}
     ,options).toPromise().then(resp => {
       console.log(resp);
 
     }).catch(error => {
         console.log('Error');
+        loading.dismiss();
         this.error_controller.showError(error);
     });;
 
-    this.http.post('http://135.181.65.177/habco/document',{file:this.certification_base64[1],file_type:'application/pdf',type:'document'}
+    this.http.post('https://habco.rshayanfar.ir/habco/document',
+    {file:this.certification_base64[1],file_type:'application/pdf',type:'document'}
     ,options).toPromise().then(resp => {
       console.log(resp);
 
     }).catch(error => {
         console.log('Error');
+        loading.dismiss();
         this.error_controller.showError(error);
     });;
-    this.http.patch('http://135.181.65.177/habco/user',{fname:this.fname.value,
+    this.http.patch('https://habco.rshayanfar.ir/habco/user',{fname:this.fname.value,
       lname:this.lname.value},options).toPromise().then(
         resp =>{
           console.log(resp);
         }
 
       ).catch(error => {
+        loading.dismiss();
         this.error_controller.showError(error);
       });
       console.log(this.proficiency.value);
-      this.http.put('http://135.181.65.177/habco/doctor',{specialization:this.proficiency.value}
+      this.http.put('https://habco.rshayanfar.ir/habco/doctor',{specialization:this.proficiency.value}
       ,options).toPromise().then(
         resp =>{
           console.log(resp);
@@ -120,8 +123,16 @@ export class DoctorUploadPage implements OnInit {
         }
 
       ).catch(error => {
+        loading.dismiss();
         this.error_controller.showError(error);
       });
+      loading.dismiss();
+
+    }
+    else{
+      loading.dismiss();
+      this.error_controller.showError('Please Upload your CV and Certification file...');
+    }
   }
 
 

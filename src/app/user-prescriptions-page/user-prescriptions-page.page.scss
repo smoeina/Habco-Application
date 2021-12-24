@@ -1,0 +1,44 @@
+
+p{
+  font-family: 'HelloKetta';
+  font-size:30px;
+}
+ion-title{
+  font-family: 'PlusJakarta-bold', cursive;
+  font-size: 16px;
+}
+ion-card{
+  margin-top: 10%;
+  font-family: 'Gilroy', cursive;
+
+}
+ion-button{
+  margin-left: 30%;
+  margin-right: 30%;
+  width: 40%;
+  font-family: 'Gilroy-bold', cursive;
+
+}
+ion-card-subtitle{
+  font-family: 'Gilroy-bold';
+
+}
+ion-select-option{
+  font-family: 'Gilroy';
+
+}
+ion-item{
+  font-family: 'PlusJakarta-bold', cursive;
+  font-size: 10px;
+}
+h1{
+  font-family: 'PlusJakarta-bold';
+  font-size: 16px;
+}
+ion-content{
+  --ion-background-color: linear-gradient(to bottom, #c3fc81, #abf853 80%);
+}
+ion-toolbar {
+  --background: #abf853;
+
+}

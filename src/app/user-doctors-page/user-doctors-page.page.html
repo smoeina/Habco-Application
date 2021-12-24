@@ -10,54 +10,24 @@
 
 <ion-content fullscreen>
 
-  <ion-list>
-    <ion-list-header>
-      My Doctors
-    </ion-list-header>
 
 
-    <div *ngFor="let doctor of this.my_doctors">
-      <div class="profile">
-        <ion-item lines="none" no-lines>
-          <ion-avatar slot="start">
-            <img src="https://ui-avatars.com/api/background=17D7A0&color=fff?name={{doctor.user.fname}}+{{doctor.user.lname}}?">
-          </ion-avatar>
-          <ion-label>
-            <h2>{{doctor.user.fname}} {{doctor.user.lname}}</h2>
-            <h3>{{doctor.specialization}}</h3>
-          </ion-label>
-          <ion-icon name="chatbubbles-sharp" slot="end" (click)="whats_app_clicked(doctor)"></ion-icon>
-        </ion-item>
-      </div>
+  <div class="div_margin" >
+
+    <div class ="item" (click)="allDoctorsClicked()">
+      <h1 class="item-title">Show All Doctors</h1>
+
     </div>
 
-  </ion-list>
 
-
-
-
-
-
-
-  <ion-list>
-    <ion-list-header>
-      All Doctors
-    </ion-list-header>
-    <div *ngFor="let doctor of this.doctors_list">
-      <div class="profile">
-        <ion-item lines="none" no-lines>
-          <ion-avatar slot="start">
-            <img src="https://ui-avatars.com/api/background=17D7A0&color=fff?name={{doctor.fname}}+{{doctor.lname}}?">
-          </ion-avatar>
-          <ion-label>
-            <h2>{{doctor.fname}} {{doctor.lname}}</h2>
-            <h3>{{doctor.specialization}}</h3>
-          </ion-label>
-          <ion-icon name="add-circle" slot="end" #doctor_selected
-           (click)="select_doctor(doctor)"></ion-icon>
-        </ion-item>
-      </div>
+    <div class ="item" (click)="myDoctorsClicked()">
+      <h1 class="item-title">Show My Doctors
+      </h1>
     </div>
-  </ion-list>
+
+
+  </div>
+
+
 
 </ion-content>

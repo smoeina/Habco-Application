@@ -10,9 +10,21 @@ export class ErrorControllerService {
     ,public alertController: AlertController) { }
 
     async showError(errorMessage) {
+
       const alert = await this.alertController.create({
-        header: 'Error in sending data',
-        message: errorMessage,
+        header: 'Error',
+        message: errorMessage.error.message
+        ,
+        buttons: ['OK']
+      });
+      await alert.present();
+    } ;
+    async showErrorMessage(errorMessage) {
+
+      const alert = await this.alertController.create({
+        header: 'Error',
+        message: errorMessage
+        ,
         buttons: ['OK']
       });
       await alert.present();
