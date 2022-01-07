@@ -34,15 +34,15 @@
           <h1 style="font-size:14px">#Amount</h1>
         </ion-col>
       </ion-row>
-      <ion-row>
+      <ion-row *ngFor="let drug of drugs">
         <ion-col size="6">
-          <h1>Astaminophene</h1>
+          <h1>{{drug.name}}</h1>
         </ion-col>
         <ion-col>
 
         </ion-col>
         <ion-col>
-          <h1>14</h1>
+          <h1>{{drug.count}}</h1>
 
         </ion-col>
       </ion-row>
