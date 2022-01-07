@@ -77,6 +77,8 @@ export class UserHomePagePage implements OnInit {
     }
     prescription_clicked(){
       this.router.navigate(['user-prescriptions-page']);
-
+    }
+    drugstores_clicked(){
+      this.router.navigate(['user-drugstores-page']);
     }
 }

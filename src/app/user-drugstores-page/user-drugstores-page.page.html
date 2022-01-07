@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="user-doctors-page">Back</ion-back-button>
+    </ion-buttons>
+    <ion-title>Drug stores</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h2 style="margin-left: 4%;">List of Drug Stores</h2>
+  <div class="scrolling-wrapper-flexbox" >
+
+    <div class="card" *ngFor="let doctor of this.doctors" (click)="this.drugstore_clicked(doctor)">
+      <p>Drugstore of Dr.</p>
+      <h3>{{doctor.lname}}</h3>
+      <p>Phone</p>
+
+      <span style="font-family: PlusJakarta-bold;font-size:12px">{{doctor.phone}}</span>
+
+    </div>
+
+  </div>
+  <div *ngIf="drugstore_clicked_flag" class="drugs">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="6">
+          <h1 style="font-size:14px">Name</h1>
+        </ion-col>
+        <ion-col>
+
+        </ion-col>
+        <ion-col>
+          <h1 style="font-size:14px">#Amount</h1>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="6">
+          <h1>Astaminophene</h1>
+        </ion-col>
+        <ion-col>
+
+        </ion-col>
+        <ion-col>
+          <h1>14</h1>
+
+        </ion-col>
+      </ion-row>
+
+    </ion-grid>
+  <h1>Send prescription to Drugstore</h1>
+  <ion-item>
+    <ion-label>John Hopkins</ion-label>
+    <ion-select value="John Hopkins" multiple="true" placeholder="Select Pizza">
+      <ion-select-option value="peperoni">Jo</ion-select-option>
+      <ion-select-option value="hawaii">Hawaii</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-button expand="block" fill="solid" shape="round">
+    Send
+  </ion-button>
+  </div>
+
+
+</ion-content>

@@ -80,7 +80,7 @@ export class NurseUploadPagePage implements OnInit {
     const options = { headers };
     if (this.certification_uploaded && this.cv_uploaded){
 
-      this.http.post('https://habco.rshayanfar.ir/habco/document',{file:this.cv_base64[1],file_type:'application/pdf',type:'cv'}
+      this.http.post('https://habco.rshayanfar.ir/habco/document',{file:this.cv_base64.split(',')[1],file_type:'application/pdf',type:'cv'}
       ,options).toPromise().then(resp => {
         console.log(resp);
 
@@ -91,7 +91,7 @@ export class NurseUploadPagePage implements OnInit {
       });;
 
       this.http.post('https://habco.rshayanfar.ir/habco/document',
-      {file:this.certification_base64[1],file_type:'application/pdf',type:'document'}
+      {file:this.certification_base64.split(',')[1],file_type:'application/pdf',type:'document'}
       ,options).toPromise().then(resp => {
         console.log(resp);
 

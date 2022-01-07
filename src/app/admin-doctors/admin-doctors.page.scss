@@ -1,0 +1,60 @@
+ion-title{
+  font-family: 'PlusJakarta-bold', cursive;
+  font-size: 17px;
+}
+h2,ion-list-header{
+  font-family: 'PlusJakarta-bold', cursive;
+  font-size: 13px;
+}
+h3{
+  font-family: 'PlusJakarta-bold', cursive;
+  font-size: 10px;
+}
+p{
+  color: #868686dc;
+  font-family: 'QanelasUltraLight';
+  margin-top: 15px;
+}
+.profile{
+  text-align: center;
+  margin-right: 5%;
+  margin-left: 5%;
+  margin-top: 4%;
+  margin-bottom: 4%;
+  border-style:groove;
+  background: rgba( 255, 255, 255, 0.7 );
+
+box-shadow: 2px 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 2.5px );
+-webkit-backdrop-filter: blur( 2.5px );
+border-radius: 10px;
+border: 3px solid rgba( 255, 255, 255, 0.3 );
+
+}
+ion-item{
+  border-radius: 5%;
+}
+ion-searchbar{
+  border-radius: 20px;
+}
+ion-list-header{
+  font-size: 15px;
+}
+ion-content{
+  --ion-background-color: linear-gradient(to top, #34e67e, #abf853 80%);
+}
+ion-toolbar {
+  --background: #abf853;
+
+}
+h1{
+  font-family: 'PlusJakarta', cursive;
+  font-size: 17px;
+  margin-top: 70%;
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+ion-list{
+  border-bottom-color: transparent;
+}

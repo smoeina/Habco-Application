@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { ErrorControllerService } from './../error-controller.service';
 import { LoadingController, AlertController } from '@ionic/angular';
 /* eslint-disable @typescript-eslint/naming-convention */
@@ -23,7 +24,7 @@ export class UserDoctorsAllDoctorsPage implements OnInit {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: 'Bearer '+ this.app_token,
-      'Accept': 'application/json, text/plain',
+      Accept: 'application/json, text/plain',
         'cache-control': 'no-cache',
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token, Accept, Authorization, X-Request-With, Access-Control-Request-Method, Access-Control-Request-Headers',
@@ -48,7 +49,7 @@ export class UserDoctorsAllDoctorsPage implements OnInit {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: 'Bearer '+ this.app_token,
-      'Accept': 'application/json, text/plain',
+      Accept: 'application/json, text/plain',
         'cache-control': 'no-cache',
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token, Accept, Authorization, X-Request-With, Access-Control-Request-Method, Access-Control-Request-Headers',

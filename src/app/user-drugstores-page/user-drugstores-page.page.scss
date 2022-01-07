@@ -1,0 +1,82 @@
+.scrolling-wrapper-flexbox {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: scroll !important;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+
+  .card {
+  flex: 0 0 auto;
+  margin-right: 3%;
+  margin-left: 3%;
+  padding:5% 10% 10% 10%;
+  background: rgba( 255, 255, 255, 0.45 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 2.5px );
+  -webkit-backdrop-filter: blur( 2.5px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+  margin-top: 5%;
+  margin-bottom: 5%;
+  }
+
+}
+ion-toolbar {
+  --background: #abf853;
+
+}
+ion-title{
+  font-family:PlusJakarta-bold ;
+  font-size: 25px;
+}
+ion-content{
+  --ion-background-color: linear-gradient(to top, #34e67e, #abf853 80%);
+}
+h2{
+  font-family: PlusJakarta-bold;
+}
+h3{
+  font-family: PlusJakarta-bold;
+  font-size: 15px;
+}
+p{
+  font-family: PlusJakarta;
+  font-size: 10px;
+
+}
+.drugs {
+  flex: 0 0 auto;
+  margin-right: 3%;
+  margin-left: 3%;
+  padding:5% 10% 10% 10%;
+  background: rgba( 255, 255, 255, 0.45 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 2.5px );
+  -webkit-backdrop-filter: blur( 2.5px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+  margin-top: 5%;
+  margin-bottom: 5%;
+  }
+h1{
+  font-family: PlusJakarta-bold;
+  font-size: 12px;
+}
+
+ion-col{
+  border-bottom: 2px solid #aeb7ca;
+  border-bottom: 2px solid #aeb7ca;
+
+}
+ion-button{
+  width: 40%;
+  margin-left: 30%;
+  margin-right: 30% ;
+  --background: linear-gradient(to bottom, #34e67e, #abf853 90%);
+  border-radius:20px ;
+  margin-top: 5%;
+}
+ion-item{
+  border-radius:20px ;
+
+}

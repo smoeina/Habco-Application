@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="drugstore-home-page">Back</ion-back-button>
+    </ion-buttons>
+    <ion-title>drugstore-drugs-page</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="drugs">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="6">
+          <h1 style="font-size:14px">Name</h1>
+        </ion-col>
+        <ion-col>
+
+        </ion-col>
+        <ion-col>
+          <h1 style="font-size:14px">#Amount</h1>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngFor="let drug of this.drugs" (click)="edit_amount(drug)">
+        <ion-col size="6">
+          <h1>{{drug.name}}</h1>
+        </ion-col>
+        <ion-col>
+
+        </ion-col>
+        <ion-col>
+          <h1>{{drug.count}}</h1>
+
+        </ion-col>
+      </ion-row>
+
+    </ion-grid>
+  <h1>Send prescription to Drugstore</h1>
+
+  <ion-button expand="block" fill="solid" shape="round" (click)="showPrompt()">
+    Add A Drug
+  </ion-button>
+  </div>
+</ion-content>

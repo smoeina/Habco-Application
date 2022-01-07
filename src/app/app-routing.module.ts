@@ -92,6 +92,51 @@ const routes: Routes = [
     path: 'user-doctors-my-doctors',
     loadChildren: () => import('./user-doctors-my-doctors/user-doctors-my-doctors.module').then( m => m.UserDoctorsMyDoctorsPageModule)
   },
+  {
+    path: 'user-drugstores-page',
+    loadChildren: () => import('./user-drugstores-page/user-drugstores-page.module').then( m => m.UserDrugstoresPagePageModule)
+  },
+  {
+    path: 'drugstore-home-page',
+    loadChildren: () => import('./drugstore-home-page/drugstore-home-page.module').then( m => m.DrugstoreHomePagePageModule)
+  },
+  {
+    path: 'drugstore-edit-info',
+    loadChildren: () => import('./drugstore-edit-info/drugstore-edit-info.module').then( m => m.DrugstoreEditInfoPageModule)
+  },
+  {
+    path: 'drugstore-prescriptions-page',
+    loadChildren: () => import('./drugstore-prescriptions-page/drugstore-prescriptions-page.module').
+    then( m => m.DrugstorePrescriptionsPagePageModule)
+  },
+  {
+    path: 'drugstore-drugs-page',
+    loadChildren: () => import('./drugstore-drugs-page/drugstore-drugs-page.module').then( m => m.DrugstoreDrugsPagePageModule)
+  },
+  {
+    path: 'drugstore-edit-info',
+    loadChildren: () => import('./drugstore-edit-info/drugstore-edit-info.module').then( m => m.DrugstoreEditInfoPageModule)
+  },
+  {
+    path: 'admin-home',
+    loadChildren: () => import('./admin-home/admin-home.module').then( m => m.AdminHomePageModule)
+  },
+  {
+    path: 'admin-nurses',
+    loadChildren: () => import('./admin-nurses/admin-nurses.module').then( m => m.AdminNursesPageModule)
+  },
+  {
+    path: 'admin-doctors',
+    loadChildren: () => import('./admin-doctors/admin-doctors.module').then( m => m.AdminDoctorsPageModule)
+  },
+  {
+    path: 'admin-drugstores',
+    loadChildren: () => import('./admin-drugstores/admin-drugstores.module').then( m => m.AdminDrugstoresPageModule)
+  },
+  {
+    path: 'admin-see-info',
+    loadChildren: () => import('./admin-see-info/admin-see-info.module').then( m => m.AdminSeeInfoPageModule)
+  },
 
 ];
 

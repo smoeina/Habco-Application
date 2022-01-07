@@ -1,0 +1,73 @@
+<ion-header>
+
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="admin-home">Back</ion-back-button>
+    </ion-buttons>
+    <ion-title>{{this.adminService.type}} info</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle></ion-card-subtitle>
+      <ion-card-title>Personal Info</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <h1>
+        First Name:
+      </h1>
+      <p>{{this.adminService.selected_user.fname}}</p>
+
+      <h1>
+        Last Name:
+      </h1>
+      <p>{{this.adminService.selected_user.lname}}</p>
+      <h1 *ngIf="this.doctor">
+        specialization:
+      </h1>
+      <p *ngIf="this.doctor">{{this.adminService.selected_user.specialization}}</p>
+
+    </ion-card-content>
+  </ion-card>
+
+
+
+  <ion-card>
+
+    <ion-card-header>
+      <ion-card-subtitle></ion-card-subtitle>
+      <ion-card-title>Licenses</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content >
+      <div *ngIf="this.doctor || this.nurse">
+        <h1>Document</h1>
+        <ion-item>
+         <ion-label>Accept</ion-label>
+         <ion-toggle color="primary" [checked]="this.document_accepted" [disabled]="this.document_disabled" (ionChange)="doc_toggled($event)"></ion-toggle>
+       </ion-item>
+         <ion-button (click)="get_document()">Get Document</ion-button>
+      </div>
+
+      <h1>CV</h1>
+      <ion-item>
+        <ion-label>Accept</ion-label>
+        <ion-toggle color="primary"[checked]="this.cv_accepted" [disabled]="this.cv_disabled" (ionChange)="cv_toggled($event)"></ion-toggle>
+      </ion-item>
+
+       <ion-button (click)="get_cv()">Get CV</ion-button>
+    </ion-card-content>
+  </ion-card>
+
+
+
+
+
+
+
+
+</ion-content>

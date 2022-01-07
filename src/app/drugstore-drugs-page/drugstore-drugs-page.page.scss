@@ -1,0 +1,122 @@
+
+h1{
+  font-family: "PlusJakarta-bold";
+  font-size: 15px;
+  text-align: center;
+  font-weight: 100;
+}
+h2{
+  font-family: "PlusJakarta";
+  font-size: 13px;
+  text-align: center;
+  font-weight: 100;
+}
+p{
+  color: #868686dc;
+  font-family: 'QanelasUltraLight';
+  margin-top: 4%;
+  text-align: center;
+
+}
+
+ion-content{
+  --ion-background-color: linear-gradient(to top, #34e67e, #abf853 80%);
+}
+.welcome-border{
+  background-color: white;
+  margin-right: 10%;
+  margin-left: 10%;
+  padding-bottom: 10%;
+  background: rgba( 255, 255, 255, 0.6 );
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 2.5px );
+-webkit-backdrop-filter: blur( 2.5px );
+border-radius: 10px;
+border: 1px solid rgba( 255, 255, 255, 0.18 );
+margin-top: 10%;
+}
+.profile-status-messsage{
+  text-align: left;
+  margin-left: 10%;
+  font-size: 15px;
+}
+.profile-status{
+  background: rgba( 255, 255, 255, 0.6 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 2.5px );
+  -webkit-backdrop-filter: blur( 2.5px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 5%;
+  }
+
+.item{
+  background: rgba( 255, 255, 255, 0.6 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 2.5px );
+  -webkit-backdrop-filter: blur( 2.5px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+  height: 40%;
+  width: 40%;
+  margin:8px 5px 0px 3px;
+  padding-bottom: 6%;
+}
+.flex-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap:wrap;
+  height: 40%;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+.item-title{
+  margin-top: 3px;
+
+}
+.sec_flex-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap:wrap;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 10px;
+}
+
+.image{
+  height: 40px;
+  width: 40px;
+  margin-bottom: 4px;
+  text-align: center;
+  margin-left: 27%;
+}
+.logout{
+  background: rgba( 255, 255, 255, 0.6 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 2.5px );
+  -webkit-backdrop-filter: blur( 2.5px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+  height: 30%;
+  width: 40%;
+  margin:5px 0px 0px 3px;
+  padding-bottom: 2%;
+}
+ion-toolbar {
+  --background: #abf853;
+
+}
+ion-title{
+  font-family:AquireBold ;
+  font-size: 25px;
+}
+ion-button{
+  width: 40%;
+  margin-left: 30%;
+  margin-right: 30%;
+  margin-top: 10%;
+}

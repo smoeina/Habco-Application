@@ -1,0 +1,28 @@
+<ion-header>
+
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="admin-home">Back</ion-back-button>
+    </ion-buttons>
+    <ion-title>pharmacists</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h1 *ngIf="!this.pharmacists_list">There is no pharmacist in database yet :(</h1>
+  <ion-list>
+
+      <div class="profile" *ngFor="let pharmacist of this.pharmacists_list">
+        <ion-item lines="none" no-lines>
+          <ion-avatar slot="start">
+            <img src="https://ui-avatars.com/api/background=17D7A0&color=fff?name={{pharmacist.fname}}+{{pharmacist.lname}}?">
+          </ion-avatar>
+          <ion-label>
+            <h2>{{pharmacist.fname}} {{pharmacist.lname}}</h2>
+            <h3>{{pharmacist.specialization}}</h3>
+          </ion-label>
+          <ion-icon name="create-outline" slot="end" #pharmacist_selected (click)="select_pharmacist(pharmacist)" ></ion-icon>
+        </ion-item>
+      </div>
+  </ion-list>
+</ion-content>
