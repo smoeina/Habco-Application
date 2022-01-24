@@ -20,13 +20,13 @@
 
       </div>
       <div [class.active]="step==='pharmacist'" (click)="drugStoreClicked()"><div > <img class="type" src="/assets/Drugstore-Register.png" alt=""></div>
-      <p style="font-size: 13px;display: inline"><b>Pharmacist</b></p>
+      <p style="font-size: 14px;display: inline"><b>Pharmacist</b></p>
     </div>
-    <div [class.active]="step==='patient'" (click)="userClicked()" ><div> <img class="type"  src="/assets/Normal-user-Register.png" alt=""></div>
-    <p style="font-size: 14px;"><b>Patient</b></p>
+    <div [class.active]="step==='patient'" (click)="userClicked()" ><div> <img class="patient"  src="/assets/Normal-user-Register.png" alt=""></div>
+    <p style="font-size: 14px;display: inline"><b>Patient</b></p>
   </div>
     </div>
-    <ion-intl-tel-input defaultCountryiso="ir" #phone inputPlaceholder="9357891378"></ion-intl-tel-input>
+    <ion-intl-tel-input defaultCountryiso="ca" #phone inputPlaceholder="2124567890"></ion-intl-tel-input>
     <ion-input on-keyup="checkNationalID()" #ID  name="N_ID" type="number" placeholder="National ID Number"></ion-input>
     <span [hidden]="idSpan">Incorrect format for ID</span>
     <!-- Put Eye icon for seeing password -->
