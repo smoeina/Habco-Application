@@ -4,11 +4,12 @@ This is my first PWA project that implemented in **IONIC framework**. This appli
 
 
 
-![Welcome](Welcome.JPG)
+<img src="Welcome.JPG" width="50%">
 
-![Welcome1](Welcome1.JPG)
+<img src="Welcome1.JPG" width="50%">
 
-![login](Login_and_register.JPG)
+<img src="Login_and_register.JPG" width="50%">
+
 
 
 for seeing other pages designs you can use the following command after cloning the repository:
