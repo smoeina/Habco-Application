@@ -4,11 +4,11 @@ This is my first PWA project that implemented in **IONIC framework**. This appli
 
 
 
-<img src="Welcome.JPG" width="50%">
+<img src="Welcome.JPG" width="50%" style= "margin-right:25%;margin-left:25%;">
 
-<img src="Welcome1.JPG" width="50%">
+<img src="Welcome1.JPG" width="50%" style= "margin-right:25%;margin-left:25%;">
 
-<img src="Login_and_register.JPG" width="50%">
+<img src="Login_and_register.JPG" width="50%" style= "margin-right:25%;margin-left:25%;">
 
 
 
