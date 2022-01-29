@@ -1,6 +1,6 @@
 # Habco Application
 
-This is my first PWA project that implemented in **IONIC framework**. This application aims at connecting patients, doctors, drugstores and nurses. In this project I've designed 31 pages. here I've bring you some pages that implemented:
+This is my first PWA project that implemented in **IONIC framework**. This application aims at connecting patients, doctors, drugstores and nurses. In this project I've designed 31 pages. here I bring you some pages that implemented:
 
 
 <p align="center">
