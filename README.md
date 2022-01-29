@@ -21,7 +21,11 @@ This is my first PWA project that implemented in **IONIC framework**. This appli
 
 for seeing other pages designs you can use the following command after cloning the repository:
 
-`ionic lab`
+```bash
+#Starts a local development server
+ionic lab
+
+```
 
 ## Ionic Overview
 
