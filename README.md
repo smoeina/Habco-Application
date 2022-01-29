@@ -3,13 +3,20 @@
 This is my first PWA project that implemented in **IONIC framework**. This application aims at connecting patients, doctors, drugstores and nurses. In this project I've designed 31 pages. here I've bring you some pages that implemented:
 
 
+<p align="center">
+  <img src="Welcome.JPG" width="50%" style= "margin-right:25%;margin-left:25%;">
 
-<img src="Welcome.JPG" width="50%" style= "margin-right:25%;margin-left:25%;">
+</p>
 
-<img src="Welcome1.JPG" width="50%" style= "margin-right:25%;margin-left:25%;">
+<p align="center">
+  <img src="Welcome1.JPG" width="50%" style= "margin-right:25%;margin-left:25%;">
 
-<img src="Login_and_register.JPG" width="50%" style= "margin-right:25%;margin-left:25%;">
+</p>
 
+<p align="center">
+  <img src="Login_and_register.JPG" width="50%" style= "margin-right:25%;margin-left:25%;">
+
+</p>
 
 
 for seeing other pages designs you can use the following command after cloning the repository:
