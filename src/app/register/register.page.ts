@@ -13,16 +13,13 @@ import { range } from 'rxjs';
   styleUrls: ['./register.page.scss'],
 })
 export class RegisterPage implements OnInit {
-  @ViewChild('ID') id;
   @ViewChild('email') email;
   @ViewChild('phone') phone;
-  idSpan = true;
   emailSpan = true;
   phoneSpan = true;
   userType = 'user';
   step = 'None';
   phone_number = '';
-  real_national_number = '';
   constructor(public router: Router,public authService: AuthService,
     public loadingController: LoadingController,public alertController: AlertController,
     public ErrorCont: ErrorControllerService) {
@@ -66,25 +63,13 @@ export class RegisterPage implements OnInit {
       this.ErrorCont.showErrorMessage('Please Enter User Type');
       return;
     }
-    if (this.id.toString().length <10 ){
-      this.real_national_number = this.id.value.toString();
-      while(this.real_national_number.length <10){
-        console.log(this.real_national_number);
-        this.real_national_number= '0' + this.real_national_number;
-      }
-    }
-    else{
-      this.real_national_number= this.id.value.toString();
-      console.log('YA:'+this.real_national_number);
-    }
 
     const loading = await this.loadingController.create({
       message: 'Please wait...',
     });
     await loading.present();
-    console.log(this.real_national_number);
-    if (this.idSpan && this.emailSpan &&this.phoneSpan && this.email.length !==0){
-      this.authService.register(this.email.value,this.phone_number,this.step,this.real_national_number).toPromise().then(resp => {
+    if (this.emailSpan &&this.phoneSpan && this.email.length !==0){
+      this.authService.register(this.email.value,this.phone_number,this.step).toPromise().then(resp => {
         console.log(resp);
         loading.dismiss();
         this.registerDoneAlert();
@@ -100,14 +85,6 @@ export class RegisterPage implements OnInit {
       this.checkInputValues();
     }
 
- }
- checkNationalID(){
-  if(this.id.value.length===10){
-    this.idSpan=true;
-  }
-  else{
-    return this.idSpan=false;
-  }
  }
 
  checkEmail(){

@@ -26,8 +26,6 @@
     </div>
       </div>
       <ion-intl-tel-input defaultCountryiso="ca" #phone inputPlaceholder="2124567890"></ion-intl-tel-input>
-      <ion-input on-keyup="checkNationalID()" #ID  name="N_ID" type="number" placeholder="National ID Number"></ion-input>
-      <span [hidden]="idSpan">Incorrect format for ID</span>
       <!-- Put Eye icon for seeing password -->
       <ion-input on-keyup="checkEmail()" #email type="email" class="input" placeholder="Email" ></ion-input>
       <span [hidden]="emailSpan">Incorrect format for Email</span>

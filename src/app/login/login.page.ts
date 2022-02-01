@@ -12,13 +12,10 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  @ViewChild('ID') nationalNumber;
   @ViewChild('phone') phone;
 
-  idSpan = true;
   phoneSpan = true;
   phone_number = '';
-  realNationalNumber = '';
 
   constructor(public router: Router,public authService: AuthService,
  public alertController: AlertController,public loadingController: LoadingController,
@@ -46,21 +43,10 @@ export class LoginPage implements OnInit {
        message: 'Please wait...',
      });
     await loading.present();
-    if (this.idSpan &&this.phoneSpan){
-      if (this.nationalNumber.value.toString().length <10){
-        this.realNationalNumber= '0' + this.nationalNumber.value.toString();
-        while(this.realNationalNumber.length<10){
-          this.realNationalNumber= '0' + this.realNationalNumber.toString();
-        }
-        console.log(this.realNationalNumber);
-      }
-      else{
-        this.realNationalNumber= this.nationalNumber.value.toString();
-        console.log('YA:'+this.realNationalNumber);
-      }
+    if (this.phoneSpan){
       this.phone_number = (this.phone.dialCodePrefix+this.phone.country.dialCode +
          this.phone.phoneNumber).replace(/\s/g, '').replace('+','');
-      this.authService.login(this.realNationalNumber,this.phone_number).toPromise().then(resp => {
+      this.authService.login(this.phone_number).toPromise().then(resp => {
         console.log(resp);
         console.log(this.phone.value);
         this.authService.otp_token = resp['data'].loginToken;
@@ -80,15 +66,7 @@ export class LoginPage implements OnInit {
     }
 
  }
- checkNationalID(){
-   console.log(this.nationalNumber.value);
-  if(this.nationalNumber.value.length===10){
-    this.idSpan=true;
-  }
-  else{
-    return this.idSpan=false;
-  }
- }
+
  clickRegisterButton(){
    this.router.navigate(['register']);
  }

@@ -7,8 +7,6 @@
 
   <form #userlogin = "ngForm" (ngSubmit) = "onClickSubmit()" >
     <ion-intl-tel-input defaultCountryiso="ca" inputPlaceholder="2124567890" #phone ></ion-intl-tel-input>
-    <ion-input on-keyup="checkNationalID()" #ID name="N_ID" type="number" placeholder="National ID Number"></ion-input>
-    <span [hidden]="idSpan">Incorrect format for National ID</span>
     <ion-button expand="block" shape='round' clearInput type ="submit" value = "submit">Login</ion-button>
   </form>
   <p>Don't have an account?<a (click)="clickRegisterButton()">Register</a></p>

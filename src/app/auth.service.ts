@@ -17,23 +17,20 @@ export class AuthService {
   habcoCode?: string;
   constructor(private http: HttpClient,public ErrorCont: ErrorControllerService) { }
 
-  register(email,phone,type,national_number) {
+  register(email,phone,type) {
     console.log({'email':email,
     'phone':phone,
-    'national_number':national_number,
     'role':type});
   	return this.http.post('https://habco.rshayanfar.ir/habco/user',
     {'email':email,
     'phone':phone,
-    'national_number':national_number,
     'role':type});
   }
 
 
 
-  login(national_number,phone_number) {
-  	 return this.http.post('https://habco.rshayanfar.ir/habco/login-token' ,{'national_number':national_number,
-    'phone':phone_number});
+  login(phone_number) {
+  	 return this.http.post('https://habco.rshayanfar.ir/habco/login-token' ,{'phone':phone_number});
   }
 
 
