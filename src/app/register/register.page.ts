@@ -57,7 +57,8 @@ export class RegisterPage implements OnInit {
 
 
   async onClickSubmit() {
-    console.log((this.phone.dialCodePrefix+this.phone.country.dialCode + this.phone.phoneNumber).replace(/\s/g, '').replace('+',''));
+    console.log((this.phone.dialCodePrefix+this.phone.country.dialCode + this.phone.phoneNumber)
+    .replace(/\s/g, '').replace('+','').replace('-',''));
     this.phone_number = (this.phone.dialCodePrefix+this.phone.country.dialCode + this.phone.phoneNumber).replace(/\s/g, '').replace('+','');
     if (this.step==='None'){
       this.ErrorCont.showErrorMessage('Please Enter User Type');
