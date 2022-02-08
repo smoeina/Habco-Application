@@ -45,7 +45,7 @@ export class LoginPage implements OnInit {
     await loading.present();
     if (this.phoneSpan){
       this.phone_number = (this.phone.dialCodePrefix+this.phone.country.dialCode +
-         this.phone.phoneNumber).replace(/\s/g, '').replace('+','');
+         this.phone.phoneNumber).replace(/\s/g, '').replaceAll('+','').replaceAll('-','');
       this.authService.login(this.phone_number).toPromise().then(resp => {
         console.log(resp);
         console.log(this.phone.value);
